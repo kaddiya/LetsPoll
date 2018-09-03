@@ -10,6 +10,7 @@
       "variableSyntax": "\\${([ ~:a-zA-Z0-9._'\",\\-\\/\\(\\)]+?)}",
       "name": "aws",
       "runtime": "java8",
+      "profile": "lets-poll-default",
       "versionFunctions": true,
       "remoteFunctionData": null,
       "compiledCloudFormationTemplate": {
@@ -226,30 +227,87 @@
                 "Ref": "letsPollPrivateSubnet2"
               }
             }
+          },
+          "lambdaSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+              "GroupDescription": "Security Group for Lambda",
+              "VpcId": {
+                "Ref": "letsPollVPC"
+              },
+              "Tags": [
+                {
+                  "Key": "Name",
+                  "Value": "Lambda Security group"
+                }
+              ]
+            }
+          },
+          "databaseSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+              "GroupDescription": "Security Group for database",
+              "VpcId": {
+                "Ref": "letsPollVPC"
+              },
+              "SecurityGroupIngress": [
+                {
+                  "IpProtocol": "tcp",
+                  "FromPort": 5432,
+                  "ToPort": 5432,
+                  "SourceSecurityGroupId": {
+                    "Ref": "lambdaSecurityGroup"
+                  }
+                }
+              ],
+              "Tags": [
+                {
+                  "Key": "Name",
+                  "Value": "Database Security group"
+                }
+              ]
+            }
+          },
+          "CognitoUserPoolUserPool": {
+            "Type": "AWS::Cognito::UserPool",
+            "Properties": {
+              "UserPoolName": "letspoll-user-pool-beta-1",
+              "AutoVerifiedAttributes": [
+                "email"
+              ],
+              "MfaConfiguration": "OFF",
+              "Schema": [
+                {
+                  "Name": "name",
+                  "AttributeDataType": "String",
+                  "Mutable": true,
+                  "Required": true
+                },
+                {
+                  "Name": "email",
+                  "AttributeDataType": "String",
+                  "Mutable": false,
+                  "Required": true
+                },
+                {
+                  "Name": "phone_number",
+                  "AttributeDataType": "String",
+                  "Mutable": false,
+                  "Required": true
+                },
+                {
+                  "Name": "slackId",
+                  "AttributeDataType": "String",
+                  "Mutable": true
+                }
+              ]
+            }
           }
         },
         "Outputs": {
           "ServerlessDeploymentBucketName": {
             "Value": {
               "Ref": "ServerlessDeploymentBucket"
-            }
-          },
-          "letsPollVPCID": {
-            "Description": "The VPC id for LetsPoll VPC",
-            "Value": {
-              "Ref": "letsPollVPC"
-            },
-            "Export": {
-              "Name": "letspoll:letsPollVPCId"
-            }
-          },
-          "letsPollIGWID": {
-            "Description": "The VPC id for LetsPoll VPC",
-            "Value": {
-              "Ref": "letsPollIGW"
-            },
-            "Export": {
-              "Name": "letspoll:letsPollIGWId"
             }
           }
         }
@@ -482,32 +540,88 @@
               "Ref": "letsPollPrivateSubnet2"
             }
           }
-        }
-      },
-      "Outputs": {
-        "letsPollVPCID": {
-          "Description": "The VPC id for LetsPoll VPC",
-          "Value": {
-            "Ref": "letsPollVPC"
-          },
-          "Export": {
-            "Name": "letspoll:letsPollVPCId"
+        },
+        "lambdaSecurityGroup": {
+          "Type": "AWS::EC2::SecurityGroup",
+          "Properties": {
+            "GroupDescription": "Security Group for Lambda",
+            "VpcId": {
+              "Ref": "letsPollVPC"
+            },
+            "Tags": [
+              {
+                "Key": "Name",
+                "Value": "Lambda Security group"
+              }
+            ]
           }
         },
-        "letsPollIGWID": {
-          "Description": "The VPC id for LetsPoll VPC",
-          "Value": {
-            "Ref": "letsPollIGW"
-          },
-          "Export": {
-            "Name": "letspoll:letsPollIGWId"
+        "databaseSecurityGroup": {
+          "Type": "AWS::EC2::SecurityGroup",
+          "Properties": {
+            "GroupDescription": "Security Group for database",
+            "VpcId": {
+              "Ref": "letsPollVPC"
+            },
+            "SecurityGroupIngress": [
+              {
+                "IpProtocol": "tcp",
+                "FromPort": 5432,
+                "ToPort": 5432,
+                "SourceSecurityGroupId": {
+                  "Ref": "lambdaSecurityGroup"
+                }
+              }
+            ],
+            "Tags": [
+              {
+                "Key": "Name",
+                "Value": "Database Security group"
+              }
+            ]
+          }
+        },
+        "CognitoUserPoolUserPool": {
+          "Type": "AWS::Cognito::UserPool",
+          "Properties": {
+            "UserPoolName": "letspoll-user-pool-beta-1",
+            "AutoVerifiedAttributes": [
+              "email"
+            ],
+            "MfaConfiguration": "OFF",
+            "Schema": [
+              {
+                "Name": "name",
+                "AttributeDataType": "String",
+                "Mutable": true,
+                "Required": true
+              },
+              {
+                "Name": "email",
+                "AttributeDataType": "String",
+                "Mutable": false,
+                "Required": true
+              },
+              {
+                "Name": "phone_number",
+                "AttributeDataType": "String",
+                "Mutable": false,
+                "Required": true
+              },
+              {
+                "Name": "slackId",
+                "AttributeDataType": "String",
+                "Mutable": true
+              }
+            ]
           }
         }
-      }
+      },
+      "Outputs": {}
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/letspoll/beta/1535905364778-2018-09-02T16:22:44.778Z",
+    "artifactDirectoryName": "serverless/letspoll/beta/1535988361583-2018-09-03T15:26:01.583Z",
     "artifact": ""
   }
 }
