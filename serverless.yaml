@@ -7,6 +7,9 @@ custom:
 frameworkVersion: ">=1.0.0 <2.0.0"
 
 
+plugins:
+  - serverless-cf-vars
+
 provider:
   name: aws
   runtime: java8
@@ -18,8 +21,11 @@ resources:
   - ${file(./resources/vpc.yml)}
   #- ${file(./resources/rds.yml)}
   - ${file(./resources/cognito.yml)}
+  - ${file(./resources/lambdaExecutionRole.yml)}
+  - ${file(./resources/lambdaBasicExecutionPolicy.yml)}
+  - ${file(./resources/lambdaVpcPolicy.yml)}
   - ${file(./resources/api.yml)}
-  - ${file(./resources/iam.yml)}
+  #- ${file(./resources/kms.yml)}
 
 
 

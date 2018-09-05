@@ -288,6 +288,87 @@
         ]
       }
     },
+    "letsPollLambdaExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              },
+              "Action": [
+                "sts:AssumeRole"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "letsPollLambdaBasicExecutionPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "LetsPollLambdaBasicExecutionPolicyRenamed",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": "logs:CreateLogGroup",
+              "Resource": {
+                "Fn::Sub": "arn:aws:logs:ap-south-1:${AWS::AccountId}::*"
+              }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Resource": [
+                {
+                  "Fn::Sub": "arn:aws:logs:${AWS::AccountId}:log-group:/aws/lambda/letspoll-beta-logGroup:*"
+                }
+              ]
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "letsPollLambdaExecutionRole"
+          }
+        ]
+      }
+    },
+    "LambdaInVPCExecutionPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyName": "LambdaInVPCExecutionPolicy",
+        "PolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Effect": "Allow",
+              "Action": [
+                "ec2:CreateNetworkInterface",
+                "ec2:DescribeNetworkInterfaces",
+                "ec2:DeleteNetworkInterface"
+              ],
+              "Resource": "*"
+            }
+          ]
+        },
+        "Roles": [
+          {
+            "Ref": "letsPollLambdaExecutionRole"
+          }
+        ]
+      }
+    },
     "PlayersAPI": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
@@ -614,52 +695,6 @@
             }
           }
         }
-      }
-    },
-    "LetsPollLambdaExecutionRole": {
-      "Type": "AWS::IAM::Role",
-      "Properties": {
-        "AssumeRolePolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": {
-                "Service": [
-                  "lambda.amazonaws.com"
-                ]
-              },
-              "Action": [
-                "sts:AssumeRole"
-              ]
-            }
-          ]
-        },
-        "Policies": [
-          {
-            "PolicyName": "LogablePolicy",
-            "PolicyDocument": {
-              "Version": "2012-10-17",
-              "Statement": [
-                {
-                  "Effect": "Allow",
-                  "Action": "logs:CreateLogGroup",
-                  "Resource": "arn:aws:logs:us-west-1:162507129690:*"
-                },
-                {
-                  "Effect": "Allow",
-                  "Action": [
-                    "logs:CreateLogStream",
-                    "logs:PutLogEvents"
-                  ],
-                  "Resource": [
-                    "arn:aws:logs:us-west-1:162507129690:log-group:/aws/lambda/letspoll-beta-logGroup:*"
-                  ]
-                }
-              ]
-            }
-          }
-        ]
       }
     }
   },
