@@ -724,13 +724,24 @@
               ],
               "KeyPolicy": {
                 "Version": "2012-10-17",
-                "Id": "Administrator Access",
+                "Id": "Administrator Access to manage the key",
                 "Statement": [
                   {
                     "Sid": "Allow administration of the key",
                     "Effect": "Allow",
                     "Principal": {
-                      "AWS": "arn:aws:iam::162507129690:root"
+                      "AWS": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:iam::",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
+                            ":root"
+                          ]
+                        ]
+                      }
                     },
                     "Action": [
                       "kms:Create*",
@@ -756,7 +767,10 @@
                         "Fn::Join": [
                           "",
                           [
-                            "arn:aws:iam::162507129690",
+                            "arn:aws:iam::",
+                            {
+                              "Ref": "AWS::AccountId"
+                            },
                             ":role/",
                             {
                               "Ref": "letsPollLambdaExecutionRole"
@@ -1514,13 +1528,24 @@
             ],
             "KeyPolicy": {
               "Version": "2012-10-17",
-              "Id": "Administrator Access",
+              "Id": "Administrator Access to manage the key",
               "Statement": [
                 {
                   "Sid": "Allow administration of the key",
                   "Effect": "Allow",
                   "Principal": {
-                    "AWS": "arn:aws:iam::162507129690:root"
+                    "AWS": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:iam::",
+                          {
+                            "Ref": "AWS::AccountId"
+                          },
+                          ":root"
+                        ]
+                      ]
+                    }
                   },
                   "Action": [
                     "kms:Create*",
@@ -1546,7 +1571,10 @@
                       "Fn::Join": [
                         "",
                         [
-                          "arn:aws:iam::162507129690",
+                          "arn:aws:iam::",
+                          {
+                            "Ref": "AWS::AccountId"
+                          },
                           ":role/",
                           {
                             "Ref": "letsPollLambdaExecutionRole"
@@ -1573,7 +1601,7 @@
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/letspoll/beta/1536179820006-2018-09-05T20:37:00.006Z",
+    "artifactDirectoryName": "serverless/letspoll/beta/1536180154835-2018-09-05T20:42:34.835Z",
     "artifact": ""
   }
 }

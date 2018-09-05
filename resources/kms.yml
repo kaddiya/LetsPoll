@@ -8,32 +8,18 @@ Resources:
           Value: Lets Poll CMK
       KeyPolicy:
         Version: "2012-10-17"
-        Id: "Administrator Access"
+        Id: "Administrator Access to manage the key"
         Statement:
-      #    -
-      #      Sid: "Allow administration of the key"
-      #      Effect: "Allow"
-      #      Principal:
-      #        AWS: "arn:aws:iam::162507129690:user/serverless-agent"
-      #      Action:
-      #        - "kms:Create*"
-      #        - "kms:Describe*"
-      #        - "kms:Enable*"
-      #        - "kms:List*"
-      #        - "kms:Put*"
-      #        - "kms:Update*"
-      #        - "kms:Revoke*"
-      #        - "kms:Disable*"
-      #        - "kms:Get*"
-      #        - "kms:Delete*"
-      #        - "kms:ScheduleKeyDeletion"
-      #        - "kms:CancelKeyDeletion"
-      #      Resource: "*"
           -
             Sid: "Allow administration of the key"
             Effect: "Allow"
             Principal:
-              AWS: "arn:aws:iam::162507129690:root"
+              AWS :
+                Fn::Join:
+                    - ""
+                    - - "arn:aws:iam::"
+                      - Ref: AWS::AccountId
+                      - ":root"
             Action:
               - "kms:Create*"
               - "kms:Describe*"
@@ -48,18 +34,6 @@ Resources:
               - "kms:ScheduleKeyDeletion"
               - "kms:CancelKeyDeletion"
             Resource: "*"
-        #  -
-        #    Sid: "Allow use of the key"
-        #    Effect: "Allow"
-        #    Principal:
-        #      AWS : "arn:aws:iam::162507129690:role/letspoll-beta-letsPollLambdaExecutionRole-1B35F2RBAC0S8"
-        #    Action:
-        #      - "kms:Encrypt"
-        #      - "kms:Decrypt"
-        #      - "kms:ReEncrypt*"
-        #      - "kms:GenerateDataKey*"
-        #      - "kms:DescribeKey"
-        #    Resource: "*"
 
           -
             Sid: "Allow use of the key"
@@ -68,7 +42,8 @@ Resources:
               AWS :
                 Fn::Join:
                     - ""
-                    - - "arn:aws:iam::162507129690"
+                    - - "arn:aws:iam::"
+                      - Ref: AWS::AccountId
                       - ":role/"
                       - Ref: letsPollLambdaExecutionRole
             Action:
