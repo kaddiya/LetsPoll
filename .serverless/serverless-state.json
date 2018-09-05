@@ -302,6 +302,380 @@
                 }
               ]
             }
+          },
+          "PlayersAPI": {
+            "Type": "AWS::ApiGateway::RestApi",
+            "Properties": {
+              "Name": "Lets Poll API",
+              "Description": "Lets Poll API",
+              "Body": {
+                "swagger": "2.0",
+                "info": {
+                  "version": "1.0.0",
+                  "title": "Lets Poll"
+                },
+                "schemes": [
+                  "https"
+                ],
+                "paths": {
+                  "/polls": {
+                    "get": {
+                      "produces": [
+                        "application/json"
+                      ],
+                      "responses": {
+                        "200": {
+                          "description": "200 response",
+                          "schema": {
+                            "$ref": "#/definitions/Polls"
+                          }
+                        }
+                      }
+                    },
+                    "post": {
+                      "consumes": [
+                        "application/json"
+                      ],
+                      "produces": [
+                        "application/json"
+                      ],
+                      "parameters": [
+                        {
+                          "in": "body",
+                          "name": "PollCreationRequest",
+                          "description": "body object",
+                          "required": true,
+                          "schema": {
+                            "$ref": "#/definitions/PollCreationRequest"
+                          }
+                        }
+                      ],
+                      "responses": {
+                        "200": {
+                          "description": "200 response",
+                          "schema": {
+                            "$ref": "#/definitions/PollCreationResponse"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "/polls/{pollId}": {
+                    "get": {
+                      "produces": [
+                        "application/json"
+                      ],
+                      "parameters": [
+                        {
+                          "name": "pollId",
+                          "in": "path",
+                          "required": true,
+                          "type": "string"
+                        }
+                      ],
+                      "responses": {
+                        "200": {
+                          "description": "200 response",
+                          "schema": {
+                            "$ref": "#/definitions/Poll"
+                          }
+                        }
+                      }
+                    },
+                    "post": {
+                      "consumes": [
+                        "application/json"
+                      ],
+                      "produces": [
+                        "application/json"
+                      ],
+                      "parameters": [
+                        {
+                          "name": "pollId",
+                          "in": "path",
+                          "required": true,
+                          "type": "string"
+                        },
+                        {
+                          "in": "body",
+                          "name": "PollResponseReqiest",
+                          "required": true,
+                          "schema": {
+                            "$ref": "#/definitions/PollResponseReqiest"
+                          }
+                        }
+                      ],
+                      "responses": {
+                        "200": {
+                          "description": "200 response",
+                          "schema": {
+                            "$ref": "#/definitions/PollResponseResponse"
+                          }
+                        }
+                      }
+                    },
+                    "delete": {
+                      "produces": [
+                        "application/json"
+                      ],
+                      "parameters": [
+                        {
+                          "name": "pollId",
+                          "in": "path",
+                          "required": true,
+                          "type": "string"
+                        }
+                      ],
+                      "responses": {}
+                    }
+                  },
+                  "/polls/{pollId}/responses": {
+                    "get": {
+                      "produces": [
+                        "application/json"
+                      ],
+                      "parameters": [
+                        {
+                          "name": "pollId",
+                          "in": "path",
+                          "required": true,
+                          "type": "string"
+                        }
+                      ],
+                      "responses": {
+                        "200": {
+                          "description": "200 response",
+                          "schema": {
+                            "$ref": "#/definitions/PollResponsesResultResponse"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "/respondent": {
+                    "post": {
+                      "consumes": [
+                        "application/json"
+                      ],
+                      "produces": [
+                        "application/json"
+                      ],
+                      "parameters": [
+                        {
+                          "in": "body",
+                          "name": "RespondentRegisterationRequest",
+                          "description": "body object",
+                          "required": true,
+                          "schema": {
+                            "$ref": "#/definitions/RespondentRegisterationRequest"
+                          }
+                        }
+                      ],
+                      "responses": {
+                        "201": {
+                          "description": "Respondent created",
+                          "headers": {
+                            "Location": {
+                              "type": "string",
+                              "description": "links to the newly registered respondent"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "definitions": {
+                  "PollResponseResponse": {
+                    "type": "object",
+                    "properties": {
+                      "pollQuestion": {
+                        "type": "string"
+                      },
+                      "respondentsReponse": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "PollCreationResponse": {
+                    "type": "object",
+                    "properties": {
+                      "polls": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/Poll"
+                        }
+                      }
+                    }
+                  },
+                  "PollResponseReqiest": {
+                    "type": "object",
+                    "required": [
+                      "polLResponse",
+                      "pollId",
+                      "respondentId"
+                    ],
+                    "properties": {
+                      "pollId": {
+                        "type": "string"
+                      },
+                      "polLResponse": {
+                        "type": "string"
+                      },
+                      "respondentId": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "PollResponseStatistics": {
+                    "type": "object",
+                    "properties": {
+                      "response": {
+                        "type": "string"
+                      },
+                      "count": {
+                        "type": "integer"
+                      },
+                      "percentage": {
+                        "type": "number"
+                      }
+                    }
+                  },
+                  "Poll": {
+                    "type": "object",
+                    "required": [
+                      "pollOptions",
+                      "pollQuestion",
+                      "pollTitle"
+                    ],
+                    "properties": {
+                      "pollId": {
+                        "type": "string"
+                      },
+                      "pollTitle": {
+                        "type": "string"
+                      },
+                      "pollQuestion": {
+                        "type": "string"
+                      },
+                      "pollOptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "PollCreationRequest": {
+                    "type": "object",
+                    "required": [
+                      "pollOptions",
+                      "pollQuestion",
+                      "pollTitle"
+                    ],
+                    "properties": {
+                      "pollTitle": {
+                        "type": "string"
+                      },
+                      "pollQuestion": {
+                        "type": "string"
+                      },
+                      "pollOptions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "RespondentRegisterationRequest": {
+                    "type": "object",
+                    "properties": {
+                      "congitoToken": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "PollResponsesResultResponse": {
+                    "type": "object",
+                    "properties": {
+                      "pollId": {
+                        "type": "string"
+                      },
+                      "pollTitle": {
+                        "type": "string"
+                      },
+                      "pollQuestion": {
+                        "type": "string"
+                      },
+                      "responses": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/PollResponseStatistics"
+                        }
+                      }
+                    }
+                  },
+                  "Polls": {
+                    "type": "object",
+                    "properties": {
+                      "polls": {
+                        "type": "array",
+                        "items": {
+                          "$ref": "#/definitions/Poll"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "LetsPollLambdaExecutionRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+              "AssumeRolePolicyDocument": {
+                "Version": "2012-10-17",
+                "Statement": [
+                  {
+                    "Effect": "Allow",
+                    "Principal": {
+                      "Service": [
+                        "lambda.amazonaws.com"
+                      ]
+                    },
+                    "Action": [
+                      "sts:AssumeRole"
+                    ]
+                  }
+                ]
+              },
+              "Policies": [
+                {
+                  "PolicyName": "LogablePolicy",
+                  "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                      {
+                        "Effect": "Allow",
+                        "Action": "logs:CreateLogGroup",
+                        "Resource": "arn:aws:logs:us-west-1:162507129690:*"
+                      },
+                      {
+                        "Effect": "Allow",
+                        "Action": [
+                          "logs:CreateLogStream",
+                          "logs:PutLogEvents"
+                        ],
+                        "Resource": [
+                          "arn:aws:logs:us-west-1:162507129690:log-group:/aws/lambda/letspoll-beta-logGroup:*"
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
           }
         },
         "Outputs": {
@@ -615,13 +989,387 @@
               }
             ]
           }
+        },
+        "PlayersAPI": {
+          "Type": "AWS::ApiGateway::RestApi",
+          "Properties": {
+            "Name": "Lets Poll API",
+            "Description": "Lets Poll API",
+            "Body": {
+              "swagger": "2.0",
+              "info": {
+                "version": "1.0.0",
+                "title": "Lets Poll"
+              },
+              "schemes": [
+                "https"
+              ],
+              "paths": {
+                "/polls": {
+                  "get": {
+                    "produces": [
+                      "application/json"
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "200 response",
+                        "schema": {
+                          "$ref": "#/definitions/Polls"
+                        }
+                      }
+                    }
+                  },
+                  "post": {
+                    "consumes": [
+                      "application/json"
+                    ],
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                      {
+                        "in": "body",
+                        "name": "PollCreationRequest",
+                        "description": "body object",
+                        "required": true,
+                        "schema": {
+                          "$ref": "#/definitions/PollCreationRequest"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "200 response",
+                        "schema": {
+                          "$ref": "#/definitions/PollCreationResponse"
+                        }
+                      }
+                    }
+                  }
+                },
+                "/polls/{pollId}": {
+                  "get": {
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "pollId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "200 response",
+                        "schema": {
+                          "$ref": "#/definitions/Poll"
+                        }
+                      }
+                    }
+                  },
+                  "post": {
+                    "consumes": [
+                      "application/json"
+                    ],
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "pollId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                      },
+                      {
+                        "in": "body",
+                        "name": "PollResponseReqiest",
+                        "required": true,
+                        "schema": {
+                          "$ref": "#/definitions/PollResponseReqiest"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "200 response",
+                        "schema": {
+                          "$ref": "#/definitions/PollResponseResponse"
+                        }
+                      }
+                    }
+                  },
+                  "delete": {
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "pollId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                      }
+                    ],
+                    "responses": {}
+                  }
+                },
+                "/polls/{pollId}/responses": {
+                  "get": {
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                      {
+                        "name": "pollId",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                      }
+                    ],
+                    "responses": {
+                      "200": {
+                        "description": "200 response",
+                        "schema": {
+                          "$ref": "#/definitions/PollResponsesResultResponse"
+                        }
+                      }
+                    }
+                  }
+                },
+                "/respondent": {
+                  "post": {
+                    "consumes": [
+                      "application/json"
+                    ],
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                      {
+                        "in": "body",
+                        "name": "RespondentRegisterationRequest",
+                        "description": "body object",
+                        "required": true,
+                        "schema": {
+                          "$ref": "#/definitions/RespondentRegisterationRequest"
+                        }
+                      }
+                    ],
+                    "responses": {
+                      "201": {
+                        "description": "Respondent created",
+                        "headers": {
+                          "Location": {
+                            "type": "string",
+                            "description": "links to the newly registered respondent"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "definitions": {
+                "PollResponseResponse": {
+                  "type": "object",
+                  "properties": {
+                    "pollQuestion": {
+                      "type": "string"
+                    },
+                    "respondentsReponse": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "PollCreationResponse": {
+                  "type": "object",
+                  "properties": {
+                    "polls": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Poll"
+                      }
+                    }
+                  }
+                },
+                "PollResponseReqiest": {
+                  "type": "object",
+                  "required": [
+                    "polLResponse",
+                    "pollId",
+                    "respondentId"
+                  ],
+                  "properties": {
+                    "pollId": {
+                      "type": "string"
+                    },
+                    "polLResponse": {
+                      "type": "string"
+                    },
+                    "respondentId": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "PollResponseStatistics": {
+                  "type": "object",
+                  "properties": {
+                    "response": {
+                      "type": "string"
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "percentage": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "Poll": {
+                  "type": "object",
+                  "required": [
+                    "pollOptions",
+                    "pollQuestion",
+                    "pollTitle"
+                  ],
+                  "properties": {
+                    "pollId": {
+                      "type": "string"
+                    },
+                    "pollTitle": {
+                      "type": "string"
+                    },
+                    "pollQuestion": {
+                      "type": "string"
+                    },
+                    "pollOptions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "PollCreationRequest": {
+                  "type": "object",
+                  "required": [
+                    "pollOptions",
+                    "pollQuestion",
+                    "pollTitle"
+                  ],
+                  "properties": {
+                    "pollTitle": {
+                      "type": "string"
+                    },
+                    "pollQuestion": {
+                      "type": "string"
+                    },
+                    "pollOptions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "RespondentRegisterationRequest": {
+                  "type": "object",
+                  "properties": {
+                    "congitoToken": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "PollResponsesResultResponse": {
+                  "type": "object",
+                  "properties": {
+                    "pollId": {
+                      "type": "string"
+                    },
+                    "pollTitle": {
+                      "type": "string"
+                    },
+                    "pollQuestion": {
+                      "type": "string"
+                    },
+                    "responses": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/PollResponseStatistics"
+                      }
+                    }
+                  }
+                },
+                "Polls": {
+                  "type": "object",
+                  "properties": {
+                    "polls": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/definitions/Poll"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "LetsPollLambdaExecutionRole": {
+          "Type": "AWS::IAM::Role",
+          "Properties": {
+            "AssumeRolePolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Principal": {
+                    "Service": [
+                      "lambda.amazonaws.com"
+                    ]
+                  },
+                  "Action": [
+                    "sts:AssumeRole"
+                  ]
+                }
+              ]
+            },
+            "Policies": [
+              {
+                "PolicyName": "LogablePolicy",
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Effect": "Allow",
+                      "Action": "logs:CreateLogGroup",
+                      "Resource": "arn:aws:logs:us-west-1:162507129690:*"
+                    },
+                    {
+                      "Effect": "Allow",
+                      "Action": [
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents"
+                      ],
+                      "Resource": [
+                        "arn:aws:logs:us-west-1:162507129690:log-group:/aws/lambda/letspoll-beta-logGroup:*"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
         }
       },
       "Outputs": {}
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/letspoll/beta/1535988361583-2018-09-03T15:26:01.583Z",
+    "artifactDirectoryName": "serverless/letspoll/beta/1536171931331-2018-09-05T18:25:31.331Z",
     "artifact": ""
   }
 }

@@ -1,7 +1,8 @@
 service:
   name: letspoll
 
-#custom: ${file(./resources.yaml)}
+custom:
+    accountId: AWS::AccountId
 
 frameworkVersion: ">=1.0.0 <2.0.0"
 
@@ -15,8 +16,10 @@ provider:
 # The "Resources" your "Functions" use.  Raw AWS CloudFormation goes in here.
 resources:
   - ${file(./resources/vpc.yml)}
-#  - ${file(./resources/rds.yml)}
+  #- ${file(./resources/rds.yml)}
   - ${file(./resources/cognito.yml)}
+  - ${file(./resources/api.yml)}
+  - ${file(./resources/iam.yml)}
 
 
 
