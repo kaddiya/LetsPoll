@@ -711,6 +711,72 @@
                 }
               }
             }
+          },
+          "letsPollKMSKey": {
+            "Type": "AWS::KMS::Key",
+            "Properties": {
+              "Description": "Key to aid in masking of environment variables used by AWS Lambda Env Var",
+              "Tags": [
+                {
+                  "Key": "Name",
+                  "Value": "Lets Poll CMK"
+                }
+              ],
+              "KeyPolicy": {
+                "Version": "2012-10-17",
+                "Id": "Administrator Access",
+                "Statement": [
+                  {
+                    "Sid": "Allow administration of the key",
+                    "Effect": "Allow",
+                    "Principal": {
+                      "AWS": "arn:aws:iam::162507129690:root"
+                    },
+                    "Action": [
+                      "kms:Create*",
+                      "kms:Describe*",
+                      "kms:Enable*",
+                      "kms:List*",
+                      "kms:Put*",
+                      "kms:Update*",
+                      "kms:Revoke*",
+                      "kms:Disable*",
+                      "kms:Get*",
+                      "kms:Delete*",
+                      "kms:ScheduleKeyDeletion",
+                      "kms:CancelKeyDeletion"
+                    ],
+                    "Resource": "*"
+                  },
+                  {
+                    "Sid": "Allow use of the key",
+                    "Effect": "Allow",
+                    "Principal": {
+                      "AWS": {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:aws:iam::162507129690",
+                            ":role/",
+                            {
+                              "Ref": "letsPollLambdaExecutionRole"
+                            }
+                          ]
+                        ]
+                      }
+                    },
+                    "Action": [
+                      "kms:Encrypt",
+                      "kms:Decrypt",
+                      "kms:ReEncrypt*",
+                      "kms:GenerateDataKey*",
+                      "kms:DescribeKey"
+                    ],
+                    "Resource": "*"
+                  }
+                ]
+              }
+            }
           }
         },
         "Outputs": {
@@ -1435,13 +1501,79 @@
               }
             }
           }
+        },
+        "letsPollKMSKey": {
+          "Type": "AWS::KMS::Key",
+          "Properties": {
+            "Description": "Key to aid in masking of environment variables used by AWS Lambda Env Var",
+            "Tags": [
+              {
+                "Key": "Name",
+                "Value": "Lets Poll CMK"
+              }
+            ],
+            "KeyPolicy": {
+              "Version": "2012-10-17",
+              "Id": "Administrator Access",
+              "Statement": [
+                {
+                  "Sid": "Allow administration of the key",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "AWS": "arn:aws:iam::162507129690:root"
+                  },
+                  "Action": [
+                    "kms:Create*",
+                    "kms:Describe*",
+                    "kms:Enable*",
+                    "kms:List*",
+                    "kms:Put*",
+                    "kms:Update*",
+                    "kms:Revoke*",
+                    "kms:Disable*",
+                    "kms:Get*",
+                    "kms:Delete*",
+                    "kms:ScheduleKeyDeletion",
+                    "kms:CancelKeyDeletion"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Sid": "Allow use of the key",
+                  "Effect": "Allow",
+                  "Principal": {
+                    "AWS": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "arn:aws:iam::162507129690",
+                          ":role/",
+                          {
+                            "Ref": "letsPollLambdaExecutionRole"
+                          }
+                        ]
+                      ]
+                    }
+                  },
+                  "Action": [
+                    "kms:Encrypt",
+                    "kms:Decrypt",
+                    "kms:ReEncrypt*",
+                    "kms:GenerateDataKey*",
+                    "kms:DescribeKey"
+                  ],
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
         }
       },
       "Outputs": {}
     }
   },
   "package": {
-    "artifactDirectoryName": "serverless/letspoll/beta/1536177943071-2018-09-05T20:05:43.071Z",
+    "artifactDirectoryName": "serverless/letspoll/beta/1536179820006-2018-09-05T20:37:00.006Z",
     "artifact": ""
   }
 }
