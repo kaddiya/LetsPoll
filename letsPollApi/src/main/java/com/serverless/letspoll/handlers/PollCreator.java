@@ -1,4 +1,4 @@
-package com.serverless.handlers;
+package com.serverless.letspoll.handlers;
 
 /**
  * Created by Webonise on 08/09/18.

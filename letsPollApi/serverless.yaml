@@ -28,11 +28,11 @@ resources:
   - ${file(./resources/kms.yml)}
   #- $(file)(./resources/functions.yml)
 package:
-  artifact: build/libs/letsPollApi-all.jar
+  artifact: build/distributions/letsPollAPI.zip
 
 functions:
   greeter:
-    handler: com.serverless.handlers.PollGetter
+    handler: com.serverless.letspoll.handlers.PollGetter
     #awsKmsKeyArn:
     #  Ref: letsPollKMSKey
       #Fn::GetAtt: letsPollKMSKey

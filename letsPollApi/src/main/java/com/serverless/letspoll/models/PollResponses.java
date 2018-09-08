@@ -1,4 +1,4 @@
-package com.serverless.models;
+package com.serverless.letspoll.models;
 
 
 public class PollResponses {

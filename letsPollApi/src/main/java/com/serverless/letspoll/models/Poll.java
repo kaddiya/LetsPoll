@@ -1,5 +1,6 @@
-package com.serverless.models;
+package com.serverless.letspoll.models;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -8,7 +9,7 @@ public class Poll {
     private String pollId;
     private String pollTitle;
     private String pollQuestion;
-    private List<PollResponseOptions> pollOptions;
+    private List<PollResponseOptions> pollOptions = Arrays.asList(PollResponseOptions.YES,PollResponseOptions.NO);
 
     public String getPollId() {
         return pollId;

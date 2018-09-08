@@ -1,14 +1,11 @@
-package com.serverless.commons;
+package com.serverless.letspoll.commons;
 
-import com.amazonaws.services.lambda.runtime.LambdaLogger;
 import org.jooq.DSLContext;
-import org.jooq.Record;
 import org.jooq.SQLDialect;
 import org.jooq.impl.DSL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.Timestamp;
 
 
 public class DatabaseAccessUtils {
