@@ -1,0 +1,15 @@
+{
+    "type":"object",
+    "properties":{
+        "response":{
+            "type":"string"
+        },
+        "count":
+        {
+            "type":"integer"
+        },
+        "percentage":{
+            "type":"number"
+        }
+    }
+}

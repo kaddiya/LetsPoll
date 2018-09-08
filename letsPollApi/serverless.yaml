@@ -3,12 +3,81 @@ service:
 
 custom:
     accountId: AWS::AccountId
+    documentation:
+      # this is general info about the API
+      api:
+        info:
+          version: '2'
+          title: Example API
+          description: Some example API
+        tags:
+          -
+            name: Name
+            description: The first tag
+          -
+            name: Tag2
+            description: That other tag that we all love
+      # Now we describe all the models that we use
+      models:
+        -
+          name: Poll
+          contentType: "application/json"
+          schema :
+              type: "object"
+              required:
+              - "pollOptions"
+              - "pollQuestion"
+              - "pollTitle"
+              properties:
+                pollId:
+                  type: "string"
+                pollTitle:
+                  type: "string"
+                pollQuestion:
+                  type: "string"
+                pollOptions:
+                  type: "array"
+                  items:
+                    type: "string"
+      #  -
+      #    name: PollCreationRequest
+      #    contentType: "application/json"
+      #    schema: $file(./resources/api_models/pollCreationResponse.json)
+
+        #-
+        #  name: PollResponseRequest
+        #  contentType: "application/json"
+        #  schema: $file(./resources/api_models/pollResponseRequest.json)
+      #  -
+      #    name: PollResponsesResultResponse
+      #    contentType: "application/json"
+      #    schema: $file(./resources/api_models/pollResponsesResultResponse.json)
+      #  -
+      #    name: PollResponseStatistics
+      #    contentType: "application/json"
+      #    schema: $file(./resources/api_models/pollResponseStatistics.json)
+      #  -
+      #    name: Polls
+      #    contentType: "application/json"
+      #    schema: $file(./resources/api_models/polls.json)
+
+      #  -
+      #    name: RespondentRegistrationRequest
+      #    contentType: "application/json"
+      #    schema: $file(./resources/api_models/respondentRegistrationRequest.json)
+
+      #  -
+      #    name: RespondentRegistrationResponse
+      #    contentType: "application/json"
+      #    schema: $file(./resources/api_models/respondentRegistrationResponse.json)
+
 
 frameworkVersion: ">=1.0.0 <2.0.0"
 
 
 plugins:
   - serverless-cf-vars
+  - serverless-aws-documentation
 
 provider:
   name: aws
@@ -26,56 +95,40 @@ resources:
   - ${file(./resources/lambdaVpcPolicy.yml)}
   - ${file(./resources/api.yml)}
   - ${file(./resources/kms.yml)}
-  #- $(file)(./resources/functions.yml)
+  #- $(file)(./resources/functions/pollsGetter.yml)
 package:
   artifact: build/distributions/letsPollAPI.zip
 
 functions:
-  greeter:
-    handler: com.serverless.letspoll.handlers.PollGetter
+  - ${file(./resources/functions/pollsGetter.yml)}
+  #greeter:
+  #  handler: com.serverless.letspoll.handlers.PollGetter
     #awsKmsKeyArn:
     #  Ref: letsPollKMSKey
       #Fn::GetAtt: letsPollKMSKey
-    environment:
-      databaseUsername: ${env:LP_DATABASE_USERNAME}
-      databasePassword: ${env:LP_DATABASE_PASSWORD}
-      databaseUrl: ${env:LP_DATABASE_URL}
-      databasePort: ${env:LP_DATABASE_PORT}
-      databaseName: ${env:LP_DATABASE_NAME}
-    events:
-      - http:
-          path: /ping
-          method: get
-          cors: true
-
-
-          documentation:
-            summary: Gets a simple message
-            tags:
-              - Tag1
-            description: >
-              Demonstrates a GET method. You can see query string parameters,
-              request headers, response body and response headers.
-            queryParams:
-              -
-                name: firstParam
-                description: The first param that we want, you MUST pass it
-                required: true
-              -
-                name: secondParam
-                description: The second param. This one is optional
-            methodResponses:
-              -
-                statusCode: '200'
-                responseModels:
-                  "application/json": "string"
-                responseHeaders:
-                  -
-                    name: link
-                    description: describes other actions that can be taken
-                    type: string
-
-
+  #  environment:
+  #    databaseUsername: ${env:LP_DATABASE_USERNAME}
+  #    databasePassword: ${env:LP_DATABASE_PASSWORD}
+  #    databaseUrl: ${env:LP_DATABASE_URL}
+  #    databasePort: ${env:LP_DATABASE_PORT}
+  #    databaseName: ${env:LP_DATABASE_NAME}
+  #  events:
+  #    - http:
+  #        path: /polls/
+  #        method: get
+  #        cors: true
+  #        documentation:
+  #          summary: Gets a simple message
+  #          tags:
+  #            - Tag1
+  #          description: >
+  #            Demonstrates a GET method. You can see query string parameters,
+  ##            request headers, response body and response headers.
+  #          methodResponses:
+  #            -
+  #              statusCode: '200'
+  #              responseModels:
+  #                "application/json": "Polls"
 
 
 #Outputs:
