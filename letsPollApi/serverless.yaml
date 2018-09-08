@@ -50,6 +50,22 @@ custom:
                 type: "array"
                 items:
                   $ref: "{{model: Poll}}"
+        -
+          name: PollCreationRequest
+          contentType: "application/json"
+          schema:
+            type: "object"
+            required:
+            - "pollOptions"
+            - "pollQuestion"
+            - "pollTitle"
+            properties:
+              pollTitle:
+                type: "string"
+              pollQuestion:
+                type: "string"
+
+
 
 
       #  -
@@ -114,6 +130,7 @@ package:
 
 functions:
   - ${file(./resources/functions/pollsGetter.yml)}
+  - ${file(./resources/functions/pollsCreator.yml)}
   #greeter:
   #  handler: com.serverless.letspoll.handlers.PollGetter
     #awsKmsKeyArn:
