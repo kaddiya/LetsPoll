@@ -39,6 +39,19 @@ custom:
                   type: "array"
                   items:
                     type: "string"
+
+        -
+          name: Polls
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              polls:
+                type: "array"
+                items:
+                  $ref: "{{model: Poll}}"
+
+
       #  -
       #    name: PollCreationRequest
       #    contentType: "application/json"

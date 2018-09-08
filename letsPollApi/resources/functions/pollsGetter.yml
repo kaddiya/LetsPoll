@@ -21,4 +21,4 @@
               -
                 statusCode: '200'
                 responseModels:
-                  "application/json": "Poll"
+                  "application/json": "Polls"

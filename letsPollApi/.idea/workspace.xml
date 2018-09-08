@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dab2fb1-2c40-42af-a6b9-61e098de5c5a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/PollCreator.java" afterPath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/PollCreator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/functions/pollsGetter.yml" afterPath="$PROJECT_DIR$/resources/functions/pollsGetter.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serverless.yaml" afterPath="$PROJECT_DIR$/serverless.yaml" />
     </list>
     <ignored path="letsPollApi.iws" />
