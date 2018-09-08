@@ -18,10 +18,16 @@ import java.util.Random;
 public class PollCreator implements RequestHandler<PollCreationRequest,List<Poll>>{
 
     private String getPollId(){
-        byte[] array = new byte[7]; // length is bounded by 7
-        new Random().nextBytes(array);
-        String generatedString = new String(array, Charset.forName("UTF-8"));
-        return generatedString;
+        String mixedBag = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 18) { // length of the random string.
+            int index = (int) (rnd.nextFloat() * mixedBag.length());
+            salt.append(mixedBag.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
     }
 
     @Override public List<Poll> handleRequest(PollCreationRequest pollToCreate, Context context) {
