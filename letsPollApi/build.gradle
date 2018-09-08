@@ -1,20 +1,52 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+ /*   dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }*/
+}
+
 apply plugin: 'java'
+apply plugin: 'idea'
+//apply plugin: 'com.github.johnrengelman.shadow'
 
 repositories {
     mavenCentral()
+    mavenLocal()
+    jcenter()
 }
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
-
+/*
 dependencies {
     compile (
+        'org.slf4j:slf4j-api:1.7.7',
         'com.amazonaws:aws-lambda-java-core:1.1.0',
         'com.amazonaws:aws-lambda-java-log4j:1.0.0',
         'com.fasterxml.jackson.core:jackson-core:2.8.5',
         'com.fasterxml.jackson.core:jackson-databind:2.8.5',
-        'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
+        'com.fasterxml.jackson.core:jackson-annotations:2.8.5',
+        'org.jooq:jooq:3.8.2'
     )
+    runtime (
+            group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc41'
+    )
+}
+*/
+dependencies {
+  //  compile 'org.log4j:log4j-api:1.7.7'
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.0'
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '2.1.0'
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-kms', version: '1.11.397'
+
+    compile 'org.jooq:jooq:3.8.2'
+    compile 'org.jooq:jooq-meta:3.8.2'
+    runtime group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc41'
+
+    testCompile 'junit:junit:4.12'
 }
 
 // Task for building the zip file for upload
@@ -27,7 +59,7 @@ task buildZip(type: Zip) {
     // Link: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.bundling.Zip.html
 
     // set the base name of the zip file
-    baseName = "hello"
+    baseName = "letsPollAPI"
     from compileJava
     from processResources
     into('lib') {
@@ -40,3 +72,4 @@ build.dependsOn buildZip
 task wrapper(type: Wrapper) {
     gradleVersion = '3.5'
 }
+

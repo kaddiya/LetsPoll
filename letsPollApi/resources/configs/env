@@ -1,0 +1,5 @@
+export LP_DATABASE_USERNAME=letspollDB_master
+export LP_DATABASE_PASSWORD=FUAHS671231
+export LP_DATABASE_URL=letspolldb.c9mlwulrnppz.us-west-1.rds.amazonaws.com
+export LP_DATABASE_PORT=5432
+export LP_DATABASE_NAME=letsPoll

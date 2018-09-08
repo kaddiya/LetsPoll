@@ -26,6 +26,54 @@ resources:
   - ${file(./resources/lambdaVpcPolicy.yml)}
   - ${file(./resources/api.yml)}
   - ${file(./resources/kms.yml)}
+  #- $(file)(./resources/functions.yml)
+package:
+  artifact: build/libs/letsPollApi-all.jar
+
+functions:
+  greeter:
+    handler: com.serverless.handlers.PollGetter
+    #awsKmsKeyArn:
+    #  Ref: letsPollKMSKey
+      #Fn::GetAtt: letsPollKMSKey
+    environment:
+      databaseUsername: ${env:LP_DATABASE_USERNAME}
+      databasePassword: ${env:LP_DATABASE_PASSWORD}
+      databaseUrl: ${env:LP_DATABASE_URL}
+      databasePort: ${env:LP_DATABASE_PORT}
+      databaseName: ${env:LP_DATABASE_NAME}
+    events:
+      - http:
+          path: /ping
+          method: get
+          cors: true
+
+
+          documentation:
+            summary: Gets a simple message
+            tags:
+              - Tag1
+            description: >
+              Demonstrates a GET method. You can see query string parameters,
+              request headers, response body and response headers.
+            queryParams:
+              -
+                name: firstParam
+                description: The first param that we want, you MUST pass it
+                required: true
+              -
+                name: secondParam
+                description: The second param. This one is optional
+            methodResponses:
+              -
+                statusCode: '200'
+                responseModels:
+                  "application/json": "string"
+                responseHeaders:
+                  -
+                    name: link
+                    description: describes other actions that can be taken
+                    type: string
 
 
 

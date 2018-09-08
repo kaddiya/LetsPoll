@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <option name="DEFAULT_COMPILER" value="Javac" />
+    <resourceExtensions />
+    <wildcardResourcePatterns>
+      <entry name="!?*.java" />
+      <entry name="!?*.form" />
+      <entry name="!?*.class" />
+      <entry name="!?*.groovy" />
+      <entry name="!?*.scala" />
+      <entry name="!?*.flex" />
+      <entry name="!?*.kt" />
+      <entry name="!?*.clj" />
+    </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="false">
+        <processorPath useClasspath="true" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8" />
+  </component>
+  <component name="CopyrightManager" default="" />
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="DependencyValidationManager">
+    <option name="SKIP_IMPORT_STATEMENTS" value="false" />
+  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="EntryPointsManager">
+    <entry_points version="2.0" />
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="modificationStamps">
+      <map>
+        <entry key="$USER_HOME$/Restling" value="7610758305000" />
+        <entry key="$USER_HOME$/geb-ws" value="2961901372000" />
+        <entry key="$PROJECT_DIR$/../../../MethodReferences" value="2992623801000" />
+        <entry key="$PROJECT_DIR$/../../../Q" value="4487632646000" />
+        <entry key="$PROJECT_DIR$/../../../Q/Q" value="2991744972000" />
+        <entry key="$PROJECT_DIR$/../../../Q/QClient" value="4487941821000" />
+        <entry key="$PROJECT_DIR$/../../../QExample" value="2992336146000" />
+        <entry key="$PROJECT_DIR$/../../../QSample" value="11970020532000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/GH2015/leftoober-api" value="2890128106000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/Java-WSS-POC" value="2954583677000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/Java-WebSocket" value="1477389737000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/MQ-Gror" value="2975533500000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/Magnus/MHP2-BB/data-model" value="1439489930000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/Magnus/MHP2-BB/integral" value="1450200465000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/Magnus/MHP2-BB/new/data-model" value="2888511030000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/Magnus/MHP2-BB/new/service-api" value="2895462954000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/Magnus/MHP2-BB/service-api" value="1439210282000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/POCS/alexa-java" value="3028721259000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/POCS/alexa-java-skill" value="3028721259000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/POCS/groovy-goodness" value="2887033666000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/POCS/hikaricp-bug-poc" value="1445541735000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/POCS/history-tables-generator" value="2882575606000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/POCS/spock-scopes-poc/spock-scopes-poc" value="2923663182000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/brainjack-stubs" value="3050869707000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/cmd-gror" value="2976733873000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/docker-client" value="7345870210000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/edease/backend" value="3009112358000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/eisupps-codebase/eISUPPS" value="2954068756000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/exercises/TODO-Application" value="2910564585000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff-service-api" value="3042217964000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/demo/faceoff-ws-api" value="18290834700000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/faceoff-service-api" value="6089315924000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/faceoff-ws-api" value="12192035259000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/new-ws/faceoff-ws-api" value="18292982173000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/new-ws/faceoff-ws-api/player-auth" value="1524067300000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/updated/conf/faceoff-ws-api" value="18360104961000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/updated/faceoff-ws-api" value="18336041646000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/faceoff/updated/one/faceoff-ws-api" value="19898170485000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/gravy" value="2932296376000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/gravy-walkthrough" value="3009029380000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/gravy/build/distributions/gravy-0.0.1-SNAPSHOT/bin/sample" value="2961905342000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/gravy/build/distributions/gravy/bin/awesome" value="2934049476000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/grorchestrator" value="2981457845000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/proof/proof-backend-algorithm" value="2965824998000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/proof/proof-service-api" value="2937140085000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/serverless_kotlin/aws-lambda-java-authorizer" value="3064342443000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/serverless_kotlin/greeter-service" value="3052431799000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/serverless_kotlin_cb/letspoll_commons" value="3068906438000" />
+        <entry key="$PROJECT_DIR$/../../../codebases/serverless_kotlin_cb/serverlesswithkotlin" value="3068882796000" />
+        <entry key="$PROJECT_DIR$/../../../drf-poc/poc" value="2968637656000" />
+        <entry key="$PROJECT_DIR$/../../../gravy" value="2893091165000" />
+        <entry key="$PROJECT_DIR$/../../../kafka-sample" value="2950980561000" />
+        <entry key="$PROJECT_DIR$/../../../pg-dump-csv" value="2963629289000" />
+        <entry key="$PROJECT_DIR$/../../../qaf-fw/qaf" value="2963266224000" />
+        <entry key="$PROJECT_DIR$/../../../reporting-api" value="2948715808000" />
+        <entry key="$PROJECT_DIR$/../../../reports" value="2948714056000" />
+        <entry key="$PROJECT_DIR$" value="1536401459000" />
+        <entry key="$USER_HOME$/sample-gradle-project" value="2943243723000" />
+        <entry key="$USER_HOME$/scpad" value="3014724981000" />
+      </map>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="vmOptions" value="-P local" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Abstraction issues</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectModuleManager">
+    <modules />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.lastSelected" value="preferences.sourceCode.Java" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
