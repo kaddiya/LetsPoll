@@ -6,7 +6,6 @@ import java.util.List;
 
 public class Poll {
 
-
     private String pollId;
     private String pollTitle;
     private String pollQuestion;

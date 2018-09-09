@@ -22,3 +22,11 @@
                 statusCode: '200'
                 responseModels:
                   "application/json": "RespondentRegistrationResponse"
+              -
+                statusCode: '400'
+                responseModels:
+                  "application/json": "string"
+              -
+                statusCode: '409'
+                responseModels:
+                  "application/json": "string"

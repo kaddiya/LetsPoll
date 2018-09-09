@@ -6,4 +6,4 @@ export LP_DATABASE_NAME=letsPoll
 
 
 REgistrr a respondent
-curl -X POST https://0xw2bcj9v9.execute-api.ap-south-1.amazonaws.com/beta/respondent/ -d '{"token":"1212312","displayName:"wohoo","emailId":"soe@example.com"}'
+curl -X POST https://0xw2bcj9v9.execute-api.ap-south-1.amazonaws.com/beta/respondent/ -d '{"token":"12123112","displayName:"iii","emailId":"sooiii11@example.com"}'

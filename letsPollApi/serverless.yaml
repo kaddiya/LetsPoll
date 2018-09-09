@@ -153,17 +153,17 @@ custom:
       BadRequestJSON:
         statusCode: '400'
         responseModels:
-          "application/json": "BadRequestJSON"
+          "application/json": "string"
 
       NotFoundJson:
         statusCode: '404'
         responseModels:
-          "application/json": "NotFoundJSON"
+          "application/json": "string"
 
       ConflictJSON:
         statusCode: '409'
         responseModels:
-          "application/json": "ConflictJSON"
+          "application/json": "string"
 
 frameworkVersion: ">=1.0.0 <2.0.0"
 
