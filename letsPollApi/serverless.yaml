@@ -146,29 +146,31 @@ custom:
             type: "object"
             properties:
               letsPollRespondentId:
-                type: "string"
+                type: string
 
-       -
+        -
           name: RespondentDetails
           contentType: "application/json"
           schema:
             type: "object"
-           properties:
+            properties:
               respondentDisplayName:
-                type: "string"
+                type: string
               respondentEmail:
-                type: "string"
+                type: string
 
-       -
+        -
           name: PollDetails
           contentType: "application/json"
           schema:
             type: "object"
             properties:
               createdBy:
-                type: "RespondentDetails"
+                type: "object"
+                $ref: "{{model: RespondentDetails}}"
               poll:
-                type: "Poll"
+                type: "object"
+                $ref: "{{model: Poll}}"
 
 
 
@@ -197,15 +199,15 @@ resources:
   - ${file(./resources/kms.yml)}
 
 
-#package:
-#  artifact: build/distributions/letsPollAPI.zip
+package:
+  artifact: build/distributions/letsPollAPI.zip
 
 functions:
   - ${file(./resources/functions/pollsGetter.yml)}
   - ${file(./resources/functions/pollsCreator.yml)}
   - ${file(./resources/functions/pollGetter.yml)}
   - ${file(./resources/functions/respondentRegistrer.yml)}
-  - ${file(./resources/functions/pollResponder.yml)}
+  #- ${file(./resources/functions/pollResponder.yml)}
 
 
 

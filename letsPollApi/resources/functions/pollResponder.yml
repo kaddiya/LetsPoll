@@ -20,10 +20,10 @@
             requestBody:
               description: "Request body description"
             requestModels:
-              "application/json": "string"
+              "application/json": "PollResponseRequest"
 
             methodResponses:
             -
-              statusCode: '200'
-              responseModels:
-                "application/json": "string"
+              statusCode: '201'
+              #responseModels:
+              #  "application/json": string

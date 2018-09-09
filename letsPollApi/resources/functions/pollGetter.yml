@@ -27,7 +27,7 @@
                 statusCode: '200'
                 responseModels:
                   "application/json": "PollDetails"
-              -
-                statusCode: '404'
-                responseModels:
-                  "application/json": "string"
+            #  -
+            #    statusCode: '404'
+            #    responseModels:
+            #      "application/json": "string"
