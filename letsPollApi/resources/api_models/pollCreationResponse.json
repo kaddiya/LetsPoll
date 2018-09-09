@@ -1,10 +1,10 @@
 {
-  "type" : "object",
-  "properties" : {
-    "polls" : {
-      "type" : "array",
-      "items":{
-          "$ref": "{{model: Poll}}"
+  "type": "object",
+  "properties": {
+    "polls": {
+      "type": "array",
+      "items": {
+        "$ref": "{{model: Poll}}"
       }
     }
   }

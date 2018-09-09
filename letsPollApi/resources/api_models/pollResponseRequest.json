@@ -1,15 +1,19 @@
 {
-  "type" : "object",
-  "required" : [ "pollId","polLResponse","respondentId"],
-  "properties" : {
-    "pollId" : {
-      "type" : "string"
+  "type": "object",
+  "required": [
+    "pollId",
+    "polLResponse",
+    "respondentId"
+  ],
+  "properties": {
+    "pollId": {
+      "type": "string"
     },
-    "polLResponse" : {
-      "type" : "string"
+    "polLResponse": {
+      "type": "string"
     },
-    "respondentId" : {
-      "type" : "string"
+    "respondentId": {
+      "type": "string"
     }
   }
 }

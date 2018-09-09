@@ -1,15 +1,14 @@
 package com.serverless.letspoll.models;
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
+
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.Map;
-
-import org.apache.log4j.Logger;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ApiGatewayResponse {
 
@@ -18,7 +17,8 @@ public class ApiGatewayResponse {
     private final Map<String, String> headers;
     private final boolean isBase64Encoded;
 
-    public ApiGatewayResponse(int statusCode, String body, Map<String, String> headers, boolean isBase64Encoded) {
+    public ApiGatewayResponse(int statusCode, String body, Map<String, String> headers,
+        boolean isBase64Encoded) {
         this.statusCode = statusCode;
         this.body = body;
         this.headers = headers;

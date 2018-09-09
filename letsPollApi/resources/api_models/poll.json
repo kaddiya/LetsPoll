@@ -1,20 +1,24 @@
 {
-  "type" : "object",
-  "required" : [ "pollQuestion", "pollOptions", "pollTitle" ],
-  "properties" : {
-     "pollId":{
-         "type":"string"
-     },
-    "pollTitle" : {
-      "type" : "string"
+  "type": "object",
+  "required": [
+    "pollQuestion",
+    "pollOptions",
+    "pollTitle"
+  ],
+  "properties": {
+    "pollId": {
+      "type": "string"
     },
-    "pollQuestion" : {
-      "type" : "string"
+    "pollTitle": {
+      "type": "string"
     },
-    "pollOptions" : {
-      "type" : "array",
-      "items":{
-          "type":"string"
+    "pollQuestion": {
+      "type": "string"
+    },
+    "pollOptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     }
   }

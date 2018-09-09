@@ -8,7 +8,7 @@ public class PollResults {
     private String pollTitle;
     private String pollQuestion;
 
-    private Map<PollResponseOptions,Integer> responses;
+    private Map<PollResponseOptions, Integer> responses;
 
     public String getPollId() {
         return pollId;

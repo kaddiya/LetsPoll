@@ -1,17 +1,21 @@
 {
-  "type" : "object",
-  "required" : [ "pollQuestion", "pollOptions", "pollTitle" ],
-  "properties" : {
-    "pollTitle" : {
-      "type" : "string"
+  "type": "object",
+  "required": [
+    "pollQuestion",
+    "pollOptions",
+    "pollTitle"
+  ],
+  "properties": {
+    "pollTitle": {
+      "type": "string"
     },
-    "pollQuestion" : {
-      "type" : "string"
+    "pollQuestion": {
+      "type": "string"
     },
-    "pollOptions" : {
-      "type" : "array",
-      "items":{
-          "type":"string"
+    "pollOptions": {
+      "type": "array",
+      "items": {
+        "type": "string"
       }
     }
   }

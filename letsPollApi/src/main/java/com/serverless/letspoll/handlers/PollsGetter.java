@@ -18,11 +18,10 @@ public class PollsGetter implements RequestHandler<Map<String, Object>, ApiGatew
 
     @Override public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
         DSLContext dslContext = DatabaseAccessUtils.getDatabaseConnection();
-        List<Poll> polls = dslContext.selectFrom(
-            com.serverless.letspoll.models.generated.tables.Poll.POLL).fetchInto(Poll.class);
-        return ApiGatewayResponse.builder()
-            .setStatusCode(200)
-            .setObjectBody(polls)
+        List<Poll> polls =
+            dslContext.selectFrom(com.serverless.letspoll.models.generated.tables.Poll.POLL)
+                .fetchInto(Poll.class);
+        return ApiGatewayResponse.builder().setStatusCode(200).setObjectBody(polls)
             .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
             .build();
     }

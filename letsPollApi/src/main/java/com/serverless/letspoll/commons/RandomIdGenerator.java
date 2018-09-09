@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class RandomIdGenerator {
 
-    public static String getRandomString(String prefix){
+    public static String getRandomString(String prefix) {
         String mixedBag = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();

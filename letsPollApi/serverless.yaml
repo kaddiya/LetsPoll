@@ -148,6 +148,28 @@ custom:
               letsPollRespondentId:
                 type: "string"
 
+        -
+          name: RespondentDetails
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              respondentDisplayName:
+                type: "string"
+              respondentEmail:
+                type: "string"
+
+        -
+          name: PollDetails
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              createdBy:
+                type: "RespondentDetails"
+              poll:
+                type: "Poll"        
+
     commonModelSchemaFragments:
       # defining common fragments means you can reference them with a single line
       BadRequestJSON:

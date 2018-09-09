@@ -1,20 +1,20 @@
 {
-  "type" : "object",
-  "properties" : {
-    "pollId" : {
-      "type" : "string"
+  "type": "object",
+  "properties": {
+    "pollId": {
+      "type": "string"
     },
-    "pollTitle" : {
-      "type" : "string"
+    "pollTitle": {
+      "type": "string"
     },
-    "pollQuestion" : {
-      "type" : "string"
+    "pollQuestion": {
+      "type": "string"
     },
-    "responses":{
-        "type":"array",
-        "items":{
+    "responses": {
+      "type": "array",
+      "items": {
         "$ref": "{{model: PollResponseStatistics}}"
-        }
+      }
     }
   }
 }

@@ -9,7 +9,8 @@ public class Poll {
     private String pollId;
     private String pollTitle;
     private String pollQuestion;
-    private List<PollResponseOptions> pollOptions = Arrays.asList(PollResponseOptions.YES,PollResponseOptions.NO);
+    private List<PollResponseOptions> pollOptions =
+        Arrays.asList(PollResponseOptions.YES, PollResponseOptions.NO);
 
     public String getPollId() {
         return pollId;

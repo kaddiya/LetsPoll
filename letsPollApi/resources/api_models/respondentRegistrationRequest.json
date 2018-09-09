@@ -1,9 +1,9 @@
 {
-  "type" : "object",
-  "required" : [ "token"],
-  "properties" : {
-    "congitoToken" : {
-      "type" : "string"
+  "type": "object",
+  "required": ["token"],
+  "properties": {
+    "congitoToken": {
+      "type": "string"
     }
   }
 }

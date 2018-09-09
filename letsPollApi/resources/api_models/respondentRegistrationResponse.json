@@ -1,11 +1,11 @@
 {
-  "type" : "object",
-  "properties" : {
-    "respondentId" : {
-      "type" : "string"
+  "type": "object",
+  "properties": {
+    "respondentId": {
+      "type": "string"
     },
-    "cognitoToken" : {
-      "type" : "string"
+    "cognitoToken": {
+      "type": "string"
     }
   }
 }
