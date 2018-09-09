@@ -26,7 +26,7 @@ Resources:
       Properties:
         VpcId:
           Ref: letsPollVPC
-        AvailabilityZone: ap-south-1a
+        AvailabilityZone: ${self:provider.region}a
         CidrBlock: 172.31.0.0/20
         MapPublicIpOnLaunch: true
         Tags:
@@ -39,7 +39,7 @@ Resources:
          VpcId:
             Ref: letsPollVPC
          CidrBlock: 172.31.16.0/20
-         AvailabilityZone: ap-south-1a
+         AvailabilityZone: ${self:provider.region}a
          MapPublicIpOnLaunch: false
          Tags:
              - Key: Name
@@ -51,7 +51,7 @@ Resources:
          VpcId:
             Ref: letsPollVPC
          CidrBlock: 172.31.32.0/20
-         AvailabilityZone: ap-south-1b
+         AvailabilityZone: ${self:provider.region}b
          MapPublicIpOnLaunch: false
          Tags:
              - Key: Name

@@ -1,0 +1,29 @@
+  pollResponder:
+    handler: com.serverless.letspoll.handlers.PollResponder
+    environment:
+      databaseUsername: ${env:LP_DATABASE_USERNAME}
+      databasePassword: ${env:LP_DATABASE_PASSWORD}
+      databaseUrl: ${env:LP_DATABASE_URL}
+      databasePort: ${env:LP_DATABASE_PORT}
+      databaseName: ${env:LP_DATABASE_NAME}
+    events:
+      - http:
+          path: /polls/{pollId}/response/
+          method: POST
+          cors: true
+          documentation:
+            summary: Gets a simple message
+            tags:
+              - Name
+            description: >
+              Records the response for a poll
+            requestBody:
+              description: "Request body description"
+            requestModels:
+              "application/json": "string"
+
+            methodResponses:
+            -
+              statusCode: '200'
+              responseModels:
+                "application/json": "string"
