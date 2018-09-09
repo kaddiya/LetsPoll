@@ -8,6 +8,9 @@ import com.serverless.letspoll.commons.RandomIdGenerator;
 import com.serverless.letspoll.models.ApiGatewayResponse;
 import com.serverless.letspoll.models.Poll;
 import com.serverless.letspoll.models.generated.Tables;
+import com.serverless.letspoll.models.generated.tables.Respondent;
+import com.serverless.letspoll.models.generated.tables.records.PollRecord;
+import com.serverless.letspoll.models.generated.tables.records.RespondentRecord;
 import com.serverless.letspoll.models.requests.PollCreationRequest;
 import com.serverless.letspoll.models.requests.RespondentRegisterationRequest;
 import org.jooq.DSLContext;
@@ -37,15 +40,29 @@ public class PollCreator implements RequestHandler<Map<String, Object>, ApiGatew
         }
 
         DSLContext dslContext = DatabaseAccessUtils.getDatabaseConnection();
-        dslContext.transaction(configuration ->{
-            DSL.using(configuration).insertInto(com.serverless.letspoll.models.generated.tables.Poll.POLL,
-                com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_ID,
-                com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_TITLE,
-                com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_QUESTION,
-                com.serverless.letspoll.models.generated.tables.Poll.POLL.CREATED_BY)
-                .values(RandomIdGenerator.getRandomString("PID"),pollToCreate.getPollTitle(), pollToCreate.getPollQuestion(),1).execute();
+        try{
+            dslContext.transaction(configuration ->{
+                RespondentRecord respondentRecord = DSL.using(configuration).fetchOne(
+                    Respondent.RESPONDENT, Respondent.RESPONDENT.RESPONDENT_ID.eq(pollToCreate.getCreatedBy()));
 
-        });
+                DSL.using(configuration).insertInto(com.serverless.letspoll.models.generated.tables.Poll.POLL,
+                    com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_ID,
+                    com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_TITLE,
+                    com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_QUESTION,
+                    com.serverless.letspoll.models.generated.tables.Poll.POLL.CREATED_BY)
+                    .values(RandomIdGenerator.getRandomString("PID"),pollToCreate.getPollTitle(), pollToCreate.getPollQuestion(),respondentRecord.getARespondentId()).execute();
+
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return ApiGatewayResponse.builder().setStatusCode(409)
+                .setObjectBody(
+                    "Could not create this poll as the respondentId"+pollToCreate.getCreatedBy()+"wasnt found")
+                .build();
+        }
+
+
 
         List <Poll> polls = dslContext.selectFrom(
             com.serverless.letspoll.models.generated.tables.Poll.POLL).orderBy(Tables.POLL.A_POLL_ID.desc()).fetchInto(Poll.class);
