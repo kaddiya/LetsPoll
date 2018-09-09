@@ -8,23 +8,28 @@ import com.serverless.letspoll.models.generated.tables.records.PollRecord;
 import org.jooq.DSLContext;
 import com.serverless.letspoll.commons.DatabaseAccessUtils;
 
+
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Map;
 
 
-public class PollGetter implements RequestHandler<String, ApiGatewayResponse> {
+public class PollGetter implements RequestHandler<Map<String,Object>, ApiGatewayResponse> {
 
-    public ApiGatewayResponse handleRequest(String pollId, Context context) {
-        System.out.println("poll is is " + pollId);
+    public ApiGatewayResponse handleRequest(Map<String,Object>input, Context context) {
+        Map<String, String> pathParameters = (Map<String, String>) input.get("pathParameters");
+        String pollId = pathParameters.get("pollId");
+        System.out.println("pollId passed is "+ pollId);
+
         DSLContext dslContext = DatabaseAccessUtils.getDatabaseConnection();
-
-        PollRecord pollRecord = dslContext.fetchOne(com.serverless.letspoll.models.generated.tables.Poll.POLL, com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_ID.eq(pollId));
+        PollRecord pollRecord = dslContext.fetchOne(
+            com.serverless.letspoll.models.generated.tables.Poll.POLL,
+            com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_ID.eq(pollId));
         Poll poll = new Poll();
         if (pollRecord!=null) {
             poll.setPollId(pollRecord.getPollId());
             poll.setPollTitle(pollRecord.getPollTitle());
             poll.setPollQuestion(pollRecord.getPollQuestion());
-            //return userRecord.into(Poll.class);
         }
         return ApiGatewayResponse.builder()
             .setStatusCode(200)
