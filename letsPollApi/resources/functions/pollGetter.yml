@@ -1,5 +1,5 @@
-  pollsGetter:
-    handler: com.serverless.letspoll.handlers.PollsGetter
+  pollGetter:
+    handler: com.serverless.letspoll.handlers.PollGetter
     environment:
       databaseUsername: ${env:LP_DATABASE_USERNAME}
       databasePassword: ${env:LP_DATABASE_PASSWORD}
@@ -8,17 +8,22 @@
       databaseName: ${env:LP_DATABASE_NAME}
     events:
       - http:
-          path: /polls/
-          method: get
+          path: /polls/{pollId}/
+          method: GET
           cors: true
           documentation:
-            summary: Gets a simple message
+            summary: Gets a single poll by Id
             tags:
-              - Tag1
+              - Name
             description: >
-              Gets a List of All polls
+              Gets a Poll
+            pathParameters:
+              - name: "pollId"
+                in: "path"
+                required: true
+                type: "string"
             methodResponses:
               -
                 statusCode: '200'
                 responseModels:
-                  "application/json": "Polls"
+                  "application/json": "Poll"
