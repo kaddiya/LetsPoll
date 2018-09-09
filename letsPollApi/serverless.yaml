@@ -72,7 +72,7 @@ custom:
           schema:
             type: "object"
             required:
-            - "polLResponse"
+            - "pollResponse"
             - "pollId"
             - "respondentId"
             properties:
@@ -147,8 +147,7 @@ custom:
             properties:
               letsPollRespondentId:
                 type: "string"
-              letsPollToken:
-                type: "string"
+
     commonModelSchemaFragments:
       # defining common fragments means you can reference them with a single line
       BadRequestJSON:
@@ -198,6 +197,7 @@ functions:
   - ${file(./resources/functions/pollsGetter.yml)}
   - ${file(./resources/functions/pollsCreator.yml)}
   - ${file(./resources/functions/pollGetter.yml)}
+  - ${file(./resources/functions/respondentRegistrer.yml)}
 
 
 #Outputs:

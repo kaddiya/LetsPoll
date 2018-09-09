@@ -25,7 +25,7 @@ public class PollGetter implements RequestHandler<Map<String,Object>, ApiGateway
         PollRecord pollRecord = dslContext.fetchOne(
             com.serverless.letspoll.models.generated.tables.Poll.POLL,
             com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_ID.eq(pollId));
-        
+
         if (pollRecord!=null) {
             Poll poll = new Poll();
             poll.setPollId(pollRecord.getPollId());

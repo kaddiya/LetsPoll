@@ -4,18 +4,19 @@ package com.serverless.letspoll.models;
  * Created by Webonise on 08/09/18.
  */
 public class PollCreationRequest {
-    private String pollId;
+    //private String pollId;
     private String pollTitle;
     private String pollQuestion;
+    private String createdBy;
 
-    public String getPollId() {
+  /*  public String getPollId() {
         return pollId;
     }
 
     public void setPollId(String pollId) {
         this.pollId = pollId;
     }
-
+*/
     public String getPollTitle() {
         return pollTitle;
     }
@@ -30,5 +31,13 @@ public class PollCreationRequest {
 
     public void setPollQuestion(String pollQuestion) {
         this.pollQuestion = pollQuestion;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
     }
 }
