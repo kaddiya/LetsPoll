@@ -64,6 +64,93 @@ custom:
                 type: "string"
               pollQuestion:
                 type: "string"
+        -
+          name: PollResponseRequest
+          contentType: "application/json"
+          schema:
+            type: "object"
+            required:
+            - "polLResponse"
+            - "pollId"
+            - "respondentId"
+            properties:
+              pollId:
+                type: "string"
+              polLResponse:
+                type: "string"
+              respondentId:
+                type: "string"
+        -
+          name: PollResponseStatistics
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              response:
+                type: "string"
+              count:
+                type: "integer"
+              percentage:
+                type: "number"
+        -
+          name: PollResponsesResultResponse
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              pollId:
+                type: "string"
+              pollTitle:
+                type: "string"
+              pollQuestion:
+                type: "string"
+              responses:
+                type: "array"
+                items:
+                  #$ref: "#/definitions/PollResponseStatistics"
+                  $ref: "{{model: PollResponseStatistics}}"
+
+        -
+          name: Polls
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              polls:
+                type: "array"
+                items:
+                  $ref: "{{model: Poll}}"
+
+        -
+          name: RespondentRegistrationRequest
+          contentType: "application/json"
+          schema:
+            type: "object"
+            required:
+              - "token"
+              - "emailId"
+              - "displayName"
+            properties:
+              token:
+                type: "string"
+              emailId:
+                type: "string"
+              displayName:
+                type: "string"
+        -
+          name: RespondentRegistrationResponse
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              letsPollRespondentId:
+                type: "string"
+              letsPollToken:
+                type: "string"
+
+
+
+
 
 
 
