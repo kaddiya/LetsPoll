@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Poll {
 
+
     private String pollId;
     private String pollTitle;
     private String pollQuestion;
@@ -42,4 +43,5 @@ public class Poll {
     public void setPollOptions(List<PollResponseOptions> pollOptions) {
         this.pollOptions = pollOptions;
     }
+
 }
