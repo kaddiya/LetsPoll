@@ -7,10 +7,13 @@ import com.serverless.letspoll.commons.DatabaseAccessUtils;
 import com.serverless.letspoll.commons.RandomIdGenerator;
 import com.serverless.letspoll.models.ApiGatewayResponse;
 import com.serverless.letspoll.models.Poll;
+import com.serverless.letspoll.models.generated.Tables;
 import com.serverless.letspoll.models.requests.PollCreationRequest;
+import com.serverless.letspoll.models.requests.RespondentRegisterationRequest;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
+import java.io.IOException;
 import java.util.*;
 
 
@@ -20,8 +23,19 @@ public class PollCreator implements RequestHandler<Map<String, Object>, ApiGatew
 
     @Override
     public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
-        final ObjectMapper mapper = new ObjectMapper(); // jackson's objectmapper
-        final PollCreationRequest pollToCreate = mapper.convertValue(input, PollCreationRequest.class);
+        final ObjectMapper mapper = new ObjectMapper();
+        final PollCreationRequest pollToCreate;
+        try {
+            pollToCreate = mapper.readValue((String)input.get("body"), PollCreationRequest.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ApiGatewayResponse.builder().setStatusCode(400)
+                .setObjectBody(
+                    "could not parse the request body properly so can't create this poll")
+                .build();
+
+        }
+
         DSLContext dslContext = DatabaseAccessUtils.getDatabaseConnection();
         dslContext.transaction(configuration ->{
             DSL.using(configuration).insertInto(com.serverless.letspoll.models.generated.tables.Poll.POLL,
@@ -33,12 +47,11 @@ public class PollCreator implements RequestHandler<Map<String, Object>, ApiGatew
 
         });
 
-        //return dslContext.selectFrom(com.serverless.letspoll.models.generated.tables.Poll.POLL).fetchInto(Poll.class);
-        List <Poll> polls = dslContext.selectFrom(com.serverless.letspoll.models.generated.tables.Poll.POLL).fetchInto(Poll.class);
+        List <Poll> polls = dslContext.selectFrom(
+            com.serverless.letspoll.models.generated.tables.Poll.POLL).orderBy(Tables.POLL.A_POLL_ID.desc()).fetchInto(Poll.class);
         return ApiGatewayResponse.builder()
             .setStatusCode(200)
             .setObjectBody(polls)
-            .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
             .build();
 
     }

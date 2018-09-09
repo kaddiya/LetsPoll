@@ -23,7 +23,6 @@ import java.util.Map;
 public class RespondentRegistrar implements RequestHandler<Map<String,Object>, ApiGatewayResponse> {
 
     @Override public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
-        System.out.println(input.get("body"));
         final ObjectMapper mapper = new ObjectMapper();
         RespondentRegisterationRequest respondentRegisterationRequest;
         try {
@@ -42,11 +41,6 @@ public class RespondentRegistrar implements RequestHandler<Map<String,Object>, A
           dslContext.insertInto(Tables.RESPONDENT,Tables.RESPONDENT.RESPONDENT_ID,Tables.RESPONDENT.RESPONDENT_EMAIL_ID,Tables.RESPONDENT.RESPONDENT_TOKEN,Tables.RESPONDENT.RESPONDENT_DISPLAY_NAME)
                 .values(respondentId,respondentRegisterationRequest.getEmailId(),respondentRegisterationRequest.getToken(),respondentRegisterationRequest.getDisplayName())
                 .execute();
-
-         /*   dslContext.insertInto(Tables.RESPONDENT,Tables.RESPONDENT.RESPONDENT_ID,Tables.RESPONDENT.RESPONDENT_EMAIL_ID,Tables.RESPONDENT.RESPONDENT_TOKEN,Tables.RESPONDENT.RESPONDENT_DISPLAY_NAME)
-                .values(respondentId,RandomIdGenerator.getRandomString("E"),RandomIdGenerator.getRandomString(
-                    "T"),RandomIdGenerator.getRandomString("D"))
-                .execute();*/
         }catch (Exception e){
             e.printStackTrace();
             return ApiGatewayResponse.builder().setStatusCode(409)
