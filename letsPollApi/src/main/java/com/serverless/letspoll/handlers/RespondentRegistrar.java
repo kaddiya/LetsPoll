@@ -14,12 +14,14 @@ import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 
 public class RespondentRegistrar implements RequestHandler<Map<String,Object>, ApiGatewayResponse> {
 
     @Override public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
+
         final ObjectMapper mapper = new ObjectMapper();
         final RespondentRegisterationRequest respondentRegisterationRequest = mapper.convertValue(input, RespondentRegisterationRequest.class);
         String respondentId = RandomIdGenerator.getRandomString("RID");
@@ -45,8 +47,6 @@ public class RespondentRegistrar implements RequestHandler<Map<String,Object>, A
                 .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
                 .build();
         }
-
-
 
 
 }

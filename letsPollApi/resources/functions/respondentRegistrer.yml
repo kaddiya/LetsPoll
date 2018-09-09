@@ -9,19 +9,14 @@
     events:
       - http:
           path: /respondent/
-          method: post
+          method: POST
           cors: true
           documentation:
             summary: Registers a respondent
-            tags:
-              - Tag1
-            description: >
-              Gets a List of All polls
             requestBody:
               description: "Request body description"
             requestModels:
               "application/json": "RespondentRegistrationRequest"
-
             methodResponses:
               -
                 statusCode: '200'
