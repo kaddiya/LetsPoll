@@ -56,13 +56,15 @@ custom:
           schema:
             type: "object"
             required:
-            - "pollOptions"
+            - "createdBy"
             - "pollQuestion"
             - "pollTitle"
             properties:
               pollTitle:
                 type: "string"
               pollQuestion:
+                type: "string"
+              createdBy:
                 type: "string"
         -
           name: PollResponseRequest
@@ -147,6 +149,22 @@ custom:
                 type: "string"
               letsPollToken:
                 type: "string"
+    commonModelSchemaFragments:
+      # defining common fragments means you can reference them with a single line
+      BadRequestJSON:
+        statusCode: '400'
+        responseModels:
+          "application/json": "BadRequestJSON"
+
+      NotFoundJson:
+        statusCode: '404'
+        responseModels:
+          "application/json": "NotFoundJSON"
+
+      ConflictJSON:
+        statusCode: '409'
+        responseModels:
+          "application/json": "ConflictJSON"
 
 frameworkVersion: ">=1.0.0 <2.0.0"
 

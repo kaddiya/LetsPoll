@@ -25,17 +25,22 @@ public class PollGetter implements RequestHandler<Map<String,Object>, ApiGateway
         PollRecord pollRecord = dslContext.fetchOne(
             com.serverless.letspoll.models.generated.tables.Poll.POLL,
             com.serverless.letspoll.models.generated.tables.Poll.POLL.POLL_ID.eq(pollId));
-        Poll poll = new Poll();
+        
         if (pollRecord!=null) {
+            Poll poll = new Poll();
             poll.setPollId(pollRecord.getPollId());
             poll.setPollTitle(pollRecord.getPollTitle());
             poll.setPollQuestion(pollRecord.getPollQuestion());
+            return ApiGatewayResponse.builder().setStatusCode(200)
+                .setObjectBody(poll)
+                .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
+                .build();
         }
-        return ApiGatewayResponse.builder()
-            .setStatusCode(200)
-            .setObjectBody(poll)
-            .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
-            .build();
-
+        else {
+            return ApiGatewayResponse.builder().setStatusCode(404)
+                .setObjectBody("The requested Poll Doesnt exist")
+                .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
+                .build();
+        }
     }
 }
