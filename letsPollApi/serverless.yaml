@@ -74,13 +74,13 @@ custom:
             required:
             - "pollResponse"
             - "pollId"
-            - "respondentId"
+            - "respondendId"
             properties:
               pollId:
                 type: "string"
               pollResponse:
                 type: "string"
-              respondentId:
+              respondendId:
                 type: "string"
         -
           name: PollResponseStatistics
@@ -171,6 +171,9 @@ custom:
               poll:
                 type: "object"
                 $ref: "{{model: Poll}}"
+              statistics:
+                type: "array"
+                $ref: "{{model: PollResponseStatistics}}"
 
 
 

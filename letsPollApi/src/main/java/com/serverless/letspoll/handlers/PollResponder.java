@@ -27,8 +27,6 @@ public class PollResponder implements RequestHandler<Map<String, Object>, ApiGat
 
 
     @Override public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
-        Map<String, String> pathParameters = (Map<String, String>) input.get("pathParameters");
-        String pollId = pathParameters.get("pollId");
 
         final ObjectMapper mapper = new ObjectMapper();
         final PollResponseRequest pollResponseRequest;
@@ -51,10 +49,10 @@ public class PollResponder implements RequestHandler<Map<String, Object>, ApiGat
                 dslContext.transaction(configuration -> {
                     RespondentRecord respondentRecord = DSL.using(configuration)
                         .fetchOne(Respondent.RESPONDENT, Respondent.RESPONDENT.RESPONDENT_ID
-                            .eq(pollResponseRequest.getRespondendId()));
+                            .eq(pollResponseRequest.getRespondentId()));
 
                     PollRecord pollRecord = DSL.using(configuration)
-                        .fetchOne(Poll.POLL, Poll.POLL.POLL_ID.eq(pollId));
+                        .fetchOne(Poll.POLL, Poll.POLL.POLL_ID.eq(pollResponseRequest.getPollId()));
 
 
                     DSL.using(configuration)
@@ -75,7 +73,7 @@ public class PollResponder implements RequestHandler<Map<String, Object>, ApiGat
                     "Could not record this response").build();
             }
 
-        return ApiGatewayResponse.builder().setStatusCode(200).setObjectBody(
-            "Sucessfully recorded the response for the poll"+pollId + " by "+pollResponseRequest.getRespondendId()).build();
+        return ApiGatewayResponse.builder().setStatusCode(201).setObjectBody(
+            "Sucessfully recorded the response for the poll"+pollResponseRequest.getPollId() + " by "+pollResponseRequest.getRespondentId()).build();
     }
 }

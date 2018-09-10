@@ -5,17 +5,18 @@ package com.serverless.letspoll.models.requests;
  */
 public class PollResponseRequest {
     private String pollResponse;
-    private String respondendId;
+    private String respondentId;
+    private String pollId;
 
     public PollResponseRequest() {
     }
 
-    public String getRespondendId() {
-        return respondendId;
+    public String getRespondentId() {
+        return respondentId;
     }
 
-    public void setRespondendId(String respondendId) {
-        this.respondendId = respondendId;
+    public void setRespondentId(String respondendId) {
+        this.respondentId = respondendId;
     }
 
     public String getPollResponse() {
@@ -24,5 +25,13 @@ public class PollResponseRequest {
 
     public void setPollResponse(String pollResponse) {
         this.pollResponse = pollResponse;
+    }
+
+    public String getPollId() {
+        return pollId;
+    }
+
+    public void setPollId(String pollId) {
+        this.pollId = pollId;
     }
 }
