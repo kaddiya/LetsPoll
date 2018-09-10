@@ -39,7 +39,10 @@ public class PollGetter implements RequestHandler<Map<String, Object>, ApiGatewa
             List<RespondentPollResponse> pollResponse = dslContext.selectFrom(
                 RespondentPollResponse.RESPONDENT_POLL_RESPONSE).where(
                 RespondentPollResponse.RESPONDENT_POLL_RESPONSE.A_POLL_ID
+
                     .eq(pollRecord.getAPollId())).fetchInto(RespondentPollResponse.class);
+
+
 
             PollResponseStatistics s1 = new PollResponseStatistics();
             s1.setCount(10);

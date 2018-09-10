@@ -15,8 +15,8 @@ public class PollResponseRequest {
         return respondentId;
     }
 
-    public void setRespondentId(String respondendId) {
-        this.respondentId = respondendId;
+    public void setRespondentId(String respondentId) {
+        this.respondentId = respondentId;
     }
 
     public String getPollResponse() {

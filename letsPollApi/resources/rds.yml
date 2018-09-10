@@ -27,13 +27,13 @@
     letsPollDatabase:
       Type: "AWS::RDS::DBInstance"
       Properties:
-        DBName: ${self:provider.stage}-lets-poll
+        DBName: ${env.LP_DATABASE_USERNAME}
         AllocatedStorage: 5
         DBInstanceClass: "db.t2.micro"
         Engine: "postgres"
         EngineVersion: "9.5.4"
-        MasterUsername: "example"
-        MasterUserPassword: "serverless"
+        MasterUsername: ${env.LP_DATABASE_USERNAME}
+        MasterUserPassword: ${env.LP_DATABASE_USERNAME}
         VPCSecurityGroups:
           - "Fn::GetAtt": databaseSecurityGroup.GroupId
         DBSubnetGroupName:

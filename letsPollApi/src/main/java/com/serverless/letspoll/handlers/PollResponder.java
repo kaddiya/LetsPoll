@@ -13,10 +13,14 @@ import com.serverless.letspoll.models.generated.tables.records.PollRecord;
 import com.serverless.letspoll.models.generated.tables.records.RespondentRecord;
 import com.serverless.letspoll.models.requests.PollCreationRequest;
 import com.serverless.letspoll.models.requests.PollResponseRequest;
+import com.serverless.letspoll.models.responses.PollDetailsResponse;
+import com.serverless.letspoll.models.responses.PollResponseResponse;
+import com.serverless.letspoll.models.responses.RespondentDetails;
 import org.jooq.DSLContext;
 import org.jooq.impl.DSL;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Map;
 
@@ -32,8 +36,7 @@ public class PollResponder implements RequestHandler<Map<String, Object>, ApiGat
         final PollResponseRequest pollResponseRequest;
         try {
             pollResponseRequest = mapper.readValue((String) input.get("body"), PollResponseRequest.class);
-            if(pollResponseRequest!=null && Arrays.asList("YES","NO").contains(
-                pollResponseRequest.getPollResponse())) {
+            if(pollResponseRequest == null || !(Arrays.asList("YES","NO").contains(pollResponseRequest.getPollResponse()))) {
                 return ApiGatewayResponse.builder().setStatusCode(400).setObjectBody(
                     "Invalid response Type found")
                     .build();
@@ -72,8 +75,13 @@ public class PollResponder implements RequestHandler<Map<String, Object>, ApiGat
                 return ApiGatewayResponse.builder().setStatusCode(409).setObjectBody(
                     "Could not record this response").build();
             }
+        PollResponseResponse pollResponseResponse = new PollResponseResponse();
+        pollResponseResponse.setMessage("Successfully responded to the poll");
 
-        return ApiGatewayResponse.builder().setStatusCode(201).setObjectBody(
-            "Sucessfully recorded the response for the poll"+pollResponseRequest.getPollId() + " by "+pollResponseRequest.getRespondentId()).build();
+        return ApiGatewayResponse.builder()
+            .setStatusCode(200)
+            .setObjectBody(pollResponseResponse)
+            .build();
+
     }
 }

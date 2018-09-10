@@ -74,14 +74,23 @@ custom:
             required:
             - "pollResponse"
             - "pollId"
-            - "respondendId"
+            - "respondentId"
             properties:
               pollId:
                 type: "string"
               pollResponse:
                 type: "string"
-              respondendId:
+              respondentId:
                 type: "string"
+        -
+          name: PollResponseResponse
+          contentType: "application/json"
+          schema:
+            type: "object"
+            properties:
+              message:
+                type: "string"
+
         -
           name: PollResponseStatistics
           contentType: "application/json"
@@ -146,7 +155,7 @@ custom:
             type: "object"
             properties:
               letsPollRespondentId:
-                type: string
+                type: "string"
 
         -
           name: RespondentDetails
@@ -155,9 +164,9 @@ custom:
             type: "object"
             properties:
               respondentDisplayName:
-                type: string
+                type: "string"
               respondentEmail:
-                type: string
+                type: "string"
 
         -
           name: PollDetails
