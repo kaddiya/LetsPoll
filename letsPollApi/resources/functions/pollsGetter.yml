@@ -12,7 +12,7 @@
           method: get
           cors: true
           documentation:
-            summary: Gets a simple message
+            summary: Gets all Polls
             tags:
               - Tag1
             description: >

@@ -12,7 +12,7 @@
           method: POST
           cors: false
           documentation:
-            summary: Gets a simple message
+            summary: Responds to the poll
             tags:
               - Name
             description: >

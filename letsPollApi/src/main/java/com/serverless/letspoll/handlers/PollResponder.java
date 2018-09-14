@@ -73,7 +73,7 @@ public class PollResponder implements RequestHandler<Map<String, Object>, ApiGat
             } catch (Exception e) {
                 e.printStackTrace();
                 return ApiGatewayResponse.builder().setStatusCode(409).setObjectBody(
-                    "Could not record this response").build();
+                    "You can only respond to the same poll once.").build();
             }
         PollResponseResponse pollResponseResponse = new PollResponseResponse();
         pollResponseResponse.setMessage("Successfully responded to the poll");
