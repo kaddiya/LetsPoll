@@ -9,7 +9,7 @@ REgistrr a respondent
 curl -X POST https://0xw2bcj9v9.execute-api.ap-south-1.amazonaws.com/beta/respondent/ -d '{"token":"TOKENFROMDB","displayName":"ITS 1ME","emailId":"who11is@example.com"}'
 
 
-curl -X POST https://0xw2bcj9v9.execute-api.ap-south-1.amazonaws.com/beta/polls/ -d '{"pollTitle":"somePollTitle","pollQuestion":"Who are is it new? you?","createdBy":"RID-N8356TW1C8GVMZ307M"}''
+curl -X POST https://0xw2bcj9v9.execute-api.ap-south-1.amazonaws.com/beta/polls/ -d '{"pollTitle":"somePoll2Title","pollQuestion":"Who are is it ne2w? you?","createdBy":"RID-N8356TW1C8GVMZ307M"}''
 
 curl -X POST https://0xw2bcj9v9.execute-api.ap-south-1.amazonaws.com/beta/response/ -d '{"pollResponse":"YES","respondentId":"RID-SUIDWKRSZSNJJX4T2Q","pollId":"PID-0WD8QCBVF6A0XT4SGE"}'
 

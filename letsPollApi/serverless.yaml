@@ -36,7 +36,7 @@ package:
 
 functions:
   - ${file(./resources/functions/pollsGetter.yml)}
-  - ${file(./resources/functions/pollsCreator.yml)}
+  - ${file(./resources/functions/pollCreator.yml)}
   - ${file(./resources/functions/pollGetter.yml)}
   - ${file(./resources/functions/respondentRegistrer.yml)}
   - ${file(./resources/functions/pollResponder.yml)}
