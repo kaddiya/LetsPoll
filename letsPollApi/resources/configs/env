@@ -3,6 +3,7 @@ export LP_DATABASE_PASSWORD=FUAHS671231
 export LP_DATABASE_URL=letspolldb.c9mlwulrnppz.us-west-1.rds.amazonaws.com
 export LP_DATABASE_PORT=5432
 export LP_DATABASE_NAME=letsPoll
+export LP_API_KEY=fidsfv7346r53489
 
 
 REgistrr a respondent

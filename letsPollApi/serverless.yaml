@@ -20,6 +20,26 @@ provider:
   stage: ${opt:stage,'beta'} # Set the default stage used. Default is dev
   region: ${opt:region,'ap-south-1'} # Overwrite the default region used. Default is us-east-1
   profile: ${opt:profile,'lets-poll-default'}
+  apiKeys:
+    - letspoll-${self:provider.stage}-api-key # you can hide it in a serverless variable
+  usagePlan:
+    quota:
+      limit: 5000
+      offset: 2
+      period: MONTH
+    throttle:
+      burstLimit: 200
+      rateLimit: 100
+  vpc:
+    securityGroupIds:
+      - { Fn::GetAtt: [ "lambdaSecurityGroup", "GroupId" ] }
+    subnetIds:
+    #  - letsPollPrivateSubnet1
+      - Ref: letsPollPrivateSubnet1
+      - Ref: letsPollPrivateSubnet2
+      #- { Fn::GetAtt: [ "letsPollPrivateSubnet2", "sub" ] }
+      #- { Fn::GetAtt: [ "letsPollPrivateSubnet2", "GroupId" ] }
+    #  - letsPollPrivateSubnet2
 # The "Resources" your "Functions" use.  Raw AWS CloudFormation goes in here.
 resources:
   - ${file(./resources/vpc.yml)}
