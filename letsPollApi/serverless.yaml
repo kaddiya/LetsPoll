@@ -3,7 +3,7 @@ service:
 
 custom:
     accountId: AWS::AccountId
-    documentation: ${file(./resources/api_models/api.yml)}
+    documentation: ${file(./resources/api/api.yml)}
 
 
 
@@ -23,7 +23,7 @@ provider:
 # The "Resources" your "Functions" use.  Raw AWS CloudFormation goes in here.
 resources:
   - ${file(./resources/vpc.yml)}
-  #- ${file(./resources/rds.yml)}
+  - ${file(./resources/rds.yml)}
   - ${file(./resources/cognito.yml)}
   - ${file(./resources/lambdaExecutionRole.yml)}
   - ${file(./resources/lambdaBasicExecutionPolicy.yml)}
