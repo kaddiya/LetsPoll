@@ -38,10 +38,13 @@ dependencies {
             'com.fasterxml.jackson.core:jackson-databind:2.8.5',
             'com.fasterxml.jackson.core:jackson-annotations:2.8.5',
             'org.jooq:jooq:3.11.4',
-            'org.jooq:jooq-meta:3.11.4'
+            'org.jooq:jooq-meta:3.11.4',
+            'org.liquibase:liquibase-core:3.4.1'
     )
+
     runtime(
-            group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc41'
+            group: 'org.postgresql', name: 'postgresql', version: '9.4-1201-jdbc41',
+
     )
 
 }

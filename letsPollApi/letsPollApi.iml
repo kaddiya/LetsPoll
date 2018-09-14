@@ -35,5 +35,6 @@
     <orderEntry type="library" exported="" name="Gradle: org.apache.httpcomponents:httpcore:4.4.9" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-codec:commons-codec:1.10" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.liquibase:liquibase-core:3.4.1" level="project" />
   </component>
 </module>
