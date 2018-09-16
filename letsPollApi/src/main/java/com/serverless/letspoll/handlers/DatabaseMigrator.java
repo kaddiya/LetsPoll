@@ -26,6 +26,7 @@ public class DatabaseMigrator implements RequestHandler<Map<String, Object>, Api
 
         Database database = null;
         try {
+
             database = DatabaseFactory.getInstance()
                 .findCorrectDatabaseImplementation(
                     new JdbcConnection(dslContext.parsingConnection()));
@@ -39,11 +40,15 @@ public class DatabaseMigrator implements RequestHandler<Map<String, Object>, Api
             e.printStackTrace();
             return ApiGatewayResponse.builder()
                 .setStatusCode(409)
-                .setObjectBody("Could not delete the poll")
+                .setObjectBody("Could not migrate the database")
                 .build();
 
         } catch (LiquibaseException e) {
             e.printStackTrace();
+            return ApiGatewayResponse.builder()
+                .setStatusCode(409)
+                .setObjectBody("Could not migrate the database")
+                .build();
         }
         return ApiGatewayResponse.builder()
             .setStatusCode(200)

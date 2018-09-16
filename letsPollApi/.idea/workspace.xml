@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dab2fb1-2c40-42af-a6b9-61e098de5c5a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/letsPollApi.iml" afterPath="$PROJECT_DIR$/letsPollApi.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/functions/pollCreator.yml" afterPath="$PROJECT_DIR$/resources/functions/pollCreator.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/functions/pollDeletor.yml" afterPath="$PROJECT_DIR$/resources/functions/pollDeletor.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/functions/pollGetter.yml" afterPath="$PROJECT_DIR$/resources/functions/pollGetter.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/functions/pollResponder.yml" afterPath="$PROJECT_DIR$/resources/functions/pollResponder.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/functions/pollsGetter.yml" afterPath="$PROJECT_DIR$/resources/functions/pollsGetter.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/functions/respondentRegistrer.yml" afterPath="$PROJECT_DIR$/resources/functions/respondentRegistrer.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serverless.yaml" afterPath="$PROJECT_DIR$/serverless.yaml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java" afterPath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java" />
     </list>
     <ignored path="letsPollApi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,8 +41,8 @@
       <file leaf-file-name="DatabaseMigrator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.51391864" vertical-offset="255" max-vertical-offset="900">
-              <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
+            <state vertical-scroll-proportion="1.5460385" vertical-offset="13" max-vertical-offset="975">
+              <caret line="49" column="62" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -864,7 +855,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Kotlin Bytecode" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1394,8 +1385,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51391864" vertical-offset="255" max-vertical-offset="900">
-          <caret line="33" column="49" selection-start-line="33" selection-start-column="49" selection-end-line="33" selection-end-column="49" />
+        <state vertical-scroll-proportion="1.5460385" vertical-offset="13" max-vertical-offset="975">
+          <caret line="49" column="62" selection-start-line="49" selection-start-column="62" selection-end-line="49" selection-end-column="62" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

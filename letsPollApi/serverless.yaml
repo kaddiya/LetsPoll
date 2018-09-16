@@ -1,5 +1,5 @@
 service:
-  name: letspoll
+  name: letspoll-api
 
 custom:
     accountId: AWS::AccountId

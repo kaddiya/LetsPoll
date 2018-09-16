@@ -2,7 +2,7 @@ Resources:
   letsPollVPC:
     Type: AWS::EC2::VPC
     Properties:
-      CidrBlock: 172.31.0.0/16
+      CidrBlock: 10.0.0.0/16
       EnableDnsSupport: true
       EnableDnsHostnames: true
       InstanceTenancy: default
@@ -27,7 +27,7 @@ Resources:
         VpcId:
           Ref: letsPollVPC
         AvailabilityZone: ${self:provider.region}a
-        CidrBlock: 172.31.0.0/20
+        CidrBlock: 10.0.0.0/24
         MapPublicIpOnLaunch: true
         Tags:
             - Key: Name
@@ -38,7 +38,7 @@ Resources:
        Properties:
          VpcId:
             Ref: letsPollVPC
-         CidrBlock: 172.31.16.0/20
+         CidrBlock: 10.0.1.0/24
          AvailabilityZone: ${self:provider.region}a
          MapPublicIpOnLaunch: false
          Tags:
@@ -50,23 +50,26 @@ Resources:
        Properties:
          VpcId:
             Ref: letsPollVPC
-         CidrBlock: 172.31.32.0/20
+         CidrBlock: 10.0.2.0/24
          AvailabilityZone: ${self:provider.region}b
          MapPublicIpOnLaunch: false
          Tags:
              - Key: Name
                Value: Lets Poll VPC Private Subnet 2
 
-  letsPollVPCNatGateway1EIP:
+
+
+
+  letsPollVPCNatGatewayEIP:
       Type: AWS::EC2::EIP
       DependsOn: letsPollVPCGatewayAttachment
       Properties:
           Domain: vpc
-  letsPollVPCNatGateway1:
+  letsPollVPCNatGateway:
       Type: AWS::EC2::NatGateway
-      DependsOn: letsPollVPCNatGateway1EIP
+      DependsOn: letsPollVPCNatGatewayEIP
       Properties:
-          AllocationId:  { Fn::GetAtt: [ "letsPollVPCNatGateway1EIP", "AllocationId" ] }
+          AllocationId:  { Fn::GetAtt: [ "letsPollVPCNatGatewayEIP", "AllocationId" ] }
           SubnetId:
             Ref: letsPollPublicSubnet
           Tags:
@@ -82,13 +85,13 @@ Resources:
                 Value: Lets Poll Public Subnet Route Table
   letsPollVPCDefaultPublicRoute:
       Type: AWS::EC2::Route
-      DependsOn: letsPollVPCGatewayAttachment
+      #DependsOn: letsPollVPCGatewayAttachment
       Properties:
         RouteTableId:
           Ref: letsPollVPCPublicRouteTable
         DestinationCidrBlock: 0.0.0.0/0
-        NatGatewayId:
-          Ref: letsPollVPCNatGateway1
+        GatewayId:
+          Ref: letsPollIGW
 
   letsPollPublicSubnet1RouteTableAssociation:
       Type: AWS::EC2::SubnetRouteTableAssociation
@@ -104,11 +107,11 @@ Resources:
         VpcId:
           Ref: letsPollVPC
 
-  letsPollPrivateRouteTable2:
-      Type: AWS::EC2::RouteTable
-      Properties:
-        VpcId:
-         Ref: letsPollVPC
+  #letsPollPrivateRouteTable2:
+  #    Type: AWS::EC2::RouteTable
+  #    Properties:
+  #      VpcId:
+  #       Ref: letsPollVPC
 
 
   letsPollDefaultPrivateRoute1:
@@ -118,16 +121,16 @@ Resources:
         Ref: letsPollPrivateRouteTable1
       DestinationCidrBlock: 0.0.0.0/0
       NatGatewayId:
-        Ref: letsPollVPCNatGateway1
+        Ref: letsPollVPCNatGateway
 
-  letsPollDefaultPrivateRoute2:
-     Type: AWS::EC2::Route
-     Properties:
-       RouteTableId:
-         Ref: letsPollPrivateRouteTable2
-       DestinationCidrBlock: 0.0.0.0/0
-       NatGatewayId:
-         Ref: letsPollVPCNatGateway1
+  #letsPollDefaultPrivateRoute2:
+  #   Type: AWS::EC2::Route
+  #   Properties:
+  #     RouteTableId:
+  #       Ref: letsPollPrivateRouteTable1
+  #     DestinationCidrBlock: 0.0.0.0/0
+  #     NatGatewayId:
+  #       Ref: letsPollVPCNatGateway
 
   letsPollPrivateSubnet1RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
@@ -141,7 +144,7 @@ Resources:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       RouteTableId:
-        Ref: letsPollPrivateRouteTable2
+        Ref: letsPollPrivateRouteTable1
       SubnetId:
          Ref: letsPollPrivateSubnet2
 
