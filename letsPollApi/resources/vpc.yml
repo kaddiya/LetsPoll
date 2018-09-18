@@ -107,12 +107,6 @@ Resources:
         VpcId:
           Ref: letsPollVPC
 
-  #letsPollPrivateRouteTable2:
-  #    Type: AWS::EC2::RouteTable
-  #    Properties:
-  #      VpcId:
-  #       Ref: letsPollVPC
-
 
   letsPollDefaultPrivateRoute1:
     Type: AWS::EC2::Route
@@ -123,14 +117,6 @@ Resources:
       NatGatewayId:
         Ref: letsPollVPCNatGateway
 
-  #letsPollDefaultPrivateRoute2:
-  #   Type: AWS::EC2::Route
-  #   Properties:
-  #     RouteTableId:
-  #       Ref: letsPollPrivateRouteTable1
-  #     DestinationCidrBlock: 0.0.0.0/0
-  #     NatGatewayId:
-  #       Ref: letsPollVPCNatGateway
 
   letsPollPrivateSubnet1RouteTableAssociation:
     Type: AWS::EC2::SubnetRouteTableAssociation
@@ -154,11 +140,6 @@ Resources:
       GroupDescription: Security Group for Lambda
       VpcId:
         Ref: letsPollVPC
-      #SecurityGroupEgress:
-      #- IpProtocol: tcp
-      #  FromPort: -1
-      #  ToPort: -1
-      #  CidrIp: 0.0.0.0/0
       Tags:
           - Key: Name
             Value: Lambda Security group
@@ -179,21 +160,3 @@ Resources:
       Tags:
           - Key: Name
             Value: Database Security group
-
-  #letsPollDatabase: ${file(./rds.yml)}
-    #Type: "AWS::RDS::DBInstance"
-    #Properties:
-    #  DBName: "forumexample"
-    #  AllocatedStorage: 5
-    #  DBInstanceClass: "db.t2.micro"
-    #  Engine: "postgres"
-    #  EngineVersion: "9.5.4"
-    #  MasterUsername: "example"
-    #  MasterUserPassword: "serverless"
-    #  VPCSecurityGroups:
-    #    Ref: databaseSecurityGroup
-    #  Tags:
-    #    -
-    #      Key: "Name"
-    #      Value: "forum_example"
-    #DeletionPolicy: "Snapshot"
