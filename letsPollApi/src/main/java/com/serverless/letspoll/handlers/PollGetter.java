@@ -19,6 +19,7 @@ import java.util.*;
 
 public class PollGetter implements RequestHandler<Map<String, Object>, ApiGatewayResponse> {
 
+
     public ApiGatewayResponse handleRequest(Map<String, Object> input, Context context) {
         Map<String, String> pathParameters = (Map<String, String>) input.get("pathParameters");
         String pollId = pathParameters.get("pollId");
