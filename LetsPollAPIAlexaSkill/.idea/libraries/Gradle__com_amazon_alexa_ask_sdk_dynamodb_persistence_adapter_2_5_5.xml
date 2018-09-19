@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.amazon.alexa:ask-sdk-dynamodb-persistence-adapter:2.5.5">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.amazon.alexa/ask-sdk-dynamodb-persistence-adapter/2.5.5/5cf88a568bf5ee021e6353ad19f71a1884bea900/ask-sdk-dynamodb-persistence-adapter-2.5.5.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.amazon.alexa/ask-sdk-dynamodb-persistence-adapter/2.5.5/7bda24abcf501d469a5f6e7e18c9fede075f46e/ask-sdk-dynamodb-persistence-adapter-2.5.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

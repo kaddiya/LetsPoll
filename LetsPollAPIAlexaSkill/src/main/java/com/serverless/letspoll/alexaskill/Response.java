@@ -1,4 +1,4 @@
-package com.serverless;
+package com.serverless.letspoll.alexaskill;
 
 import java.util.Map;
 

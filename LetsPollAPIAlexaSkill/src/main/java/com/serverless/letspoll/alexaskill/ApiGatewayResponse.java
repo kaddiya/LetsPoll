@@ -1,4 +1,4 @@
-package com.serverless;
+package com.serverless.letspoll.alexaskill;
 
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;

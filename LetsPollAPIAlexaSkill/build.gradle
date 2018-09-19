@@ -11,9 +11,18 @@ dependencies {
     compile (
         'com.amazonaws:aws-lambda-java-core:1.1.0',
         'com.amazonaws:aws-lambda-java-log4j:1.0.0',
-        'com.fasterxml.jackson.core:jackson-core:2.8.5',
+        /*'com.fasterxml.jackson.core:jackson-core:2.8.5',
         'com.fasterxml.jackson.core:jackson-databind:2.8.5',
-        'com.fasterxml.jackson.core:jackson-annotations:2.8.5'
+        'com.fasterxml.jackson.core:jackson-annotations:2.8.5',
+            'com.amazon.alexa:alexa-skills-kit:1.5.0',
+            'com.amazonaws:aws-lambda-java-core:1.0.0',
+            'com.amazonaws:aws-java-sdk-dynamodb:1.9.40',
+            'com.amazonaws:aws-lambda-java-log4j:1.0.0',*/
+            'com.amazon.alexa:ask-sdk:2.5.5',
+            'org.slf4j:slf4j-api:1.7.10',
+             'log4j:log4j:1.2.17'
+
+
     )
 }
 
