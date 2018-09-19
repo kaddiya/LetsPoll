@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7dab2fb1-2c40-42af-a6b9-61e098de5c5a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/commons/DatabaseAccessUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/commons/DatabaseAccessUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java" afterPath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/PollGetter.java" afterPath="$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/PollGetter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serverless.yaml" afterPath="$PROJECT_DIR$/serverless.yaml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../LetsPollAPIAlexaSkill/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../LetsPollAPIAlexaSkill/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="letsPollApi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,8 +32,8 @@
       <file leaf-file-name="DatabaseMigrator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5503212" vertical-offset="358" max-vertical-offset="825">
-              <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.48608136" vertical-offset="358" max-vertical-offset="825">
+              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1470,8 +1466,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/serverless/letspoll/handlers/DatabaseMigrator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5503212" vertical-offset="358" max-vertical-offset="825">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="41" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.48608136" vertical-offset="358" max-vertical-offset="825">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

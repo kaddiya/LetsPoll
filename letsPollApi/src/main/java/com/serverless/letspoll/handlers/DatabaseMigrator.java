@@ -39,7 +39,7 @@ public class DatabaseMigrator implements RequestHandler<Map<String, Object>, Api
             e.printStackTrace();
         }
 
-        
+
         return ApiGatewayResponse.builder()
             .setStatusCode(200)
             .setObjectBody("Successfully migrated the database")
