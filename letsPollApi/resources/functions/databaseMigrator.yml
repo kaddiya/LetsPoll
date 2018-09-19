@@ -11,6 +11,7 @@
       - http:
           path: /migrations
           method: POST
+          timeout: 60
           cors: true
           documentation:
             summary: Deletes a Poll by Id
